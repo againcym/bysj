@@ -1227,6 +1227,17 @@ a { text-decoration: none; }
   cursor: not-allowed;
 }
 
+.open-contract-btn {
+  border-color: #f59e0b;
+  background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  font-weight: 700;
+}
+
+.open-contract-btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #fde68a 0%, #fcd34d 100%);
+}
+
 .source-toolbar {
   display: flex;
   flex-wrap: wrap;

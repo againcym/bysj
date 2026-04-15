@@ -1022,109 +1022,6 @@
       "operation_node_key": "430",
       "process_id": "PAINTING",
       "step_id": "4",
-      "step_name": "更换工具",
-      "step_desc": "涂装机器臂5更换末端工具5",
-      "device_name": "ARM5",
-      "action_signal": "pickUpTerminal_ARM5",
-      "display_text": "pick up the terminal|ARM5",
-      "process_context": {
-        "hardware_resource": [
-          "涂装机器臂5"
-        ],
-        "product": {
-          "product_class": "涂装半成品",
-          "product_specific": "已完成涂装"
-        },
-        "from_condition": "动子就位, 收到涂装信息",
-        "to_condition": "喷涂完成"
-      },
-      "payload": {
-        "terminal": {
-          "slot": 5
-        }
-      },
-      "register_payload": {
-        "terminal_slot": 5
-      }
-    },
-    "PAINTING__5": {
-      "context_id": "PAINTING__5",
-      "operation_node_key": "440",
-      "process_id": "PAINTING",
-      "step_id": "5",
-      "step_name": "执行涂装",
-      "step_desc": "涂装机器臂5根据蓝色写LUCKY字样信息进行涂装",
-      "device_name": "ARM5",
-      "action_signal": "trackPainting_ARM5",
-      "display_text": "track painting|ARM5",
-      "process_context": {
-        "hardware_resource": [
-          "涂装机器臂5"
-        ],
-        "product": {
-          "product_class": "涂装半成品",
-          "product_specific": "已完成涂装"
-        },
-        "from_condition": "动子就位, 收到涂装信息",
-        "to_condition": "喷涂完成"
-      },
-      "payload": {
-        "painting_recipe": {
-          "raw_instruction": "蓝色写LUCKY字样",
-          "mode": "writing",
-          "tool_type": "Fine_Point_Pen",
-          "color_cn": "蓝色",
-          "color": "blue",
-          "text": "LUCKY",
-          "linked_terminal_slot": 5
-        }
-      },
-      "register_payload": {
-        "paint_mode": "writing",
-        "paint_color": "blue",
-        "paint_color_cn": "蓝色",
-        "paint_text": "LUCKY",
-        "terminal_slot": 5,
-        "terminal_tool_type": "Fine_Point_Pen"
-      }
-    },
-    "PAINTING__6": {
-      "context_id": "PAINTING__6",
-      "operation_node_key": "450",
-      "process_id": "PAINTING",
-      "step_id": "6",
-      "step_name": "放回工具",
-      "step_desc": "涂装机器臂5放回末端工具5",
-      "device_name": "ARM5",
-      "action_signal": "putDownTerminal_ARM5",
-      "display_text": "put down the terminal|ARM5",
-      "process_context": {
-        "hardware_resource": [
-          "涂装机器臂5"
-        ],
-        "product": {
-          "product_class": "涂装半成品",
-          "product_specific": "已完成涂装"
-        },
-        "from_condition": "动子就位, 收到涂装信息",
-        "to_condition": "喷涂完成"
-      },
-      "payload": {
-        "terminal": {
-          "slot": 5,
-          "tool_type": "Fine_Point_Pen"
-        }
-      },
-      "register_payload": {
-        "terminal_slot": 5,
-        "terminal_tool_type": "Fine_Point_Pen"
-      }
-    },
-    "PAINTING__7": {
-      "context_id": "PAINTING__7",
-      "operation_node_key": "460",
-      "process_id": "PAINTING",
-      "step_id": "7",
       "step_name": "返回初始位",
       "step_desc": "涂装机器臂5回到初始位置",
       "device_name": "ARM5",
@@ -1144,7 +1041,7 @@
     },
     "PHOTO_INSPECTION__1": {
       "context_id": "PHOTO_INSPECTION__1",
-      "operation_node_key": "480",
+      "operation_node_key": "450",
       "process_id": "PHOTO_INSPECTION",
       "step_id": "1",
       "step_name": "拍照",
@@ -1166,7 +1063,7 @@
     },
     "FINISHED_PRODUCTS_WAREHOUSING__1": {
       "context_id": "FINISHED_PRODUCTS_WAREHOUSING__1",
-      "operation_node_key": "510",
+      "operation_node_key": "480",
       "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
       "step_id": "1",
       "step_name": "转移成品",
@@ -1190,7 +1087,7 @@
     },
     "FINISHED_PRODUCTS_WAREHOUSING__2": {
       "context_id": "FINISHED_PRODUCTS_WAREHOUSING__2",
-      "operation_node_key": "520",
+      "operation_node_key": "490",
       "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
       "step_id": "2",
       "step_name": "返回初始",
@@ -1214,7 +1111,7 @@
     },
     "FINISHED_PRODUCTS_WAREHOUSING__3": {
       "context_id": "FINISHED_PRODUCTS_WAREHOUSING__3",
-      "operation_node_key": "530",
+      "operation_node_key": "500",
       "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
       "step_id": "3",
       "step_name": "启动传送带",
@@ -1238,7 +1135,7 @@
     },
     "FINISHED_PRODUCTS_WAREHOUSING__4": {
       "context_id": "FINISHED_PRODUCTS_WAREHOUSING__4",
-      "operation_node_key": "540",
+      "operation_node_key": "510",
       "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
       "step_id": "4",
       "step_name": "检测并停止",
@@ -1262,7 +1159,7 @@
     },
     "FINISHED_PRODUCTS_WAREHOUSING__5": {
       "context_id": "FINISHED_PRODUCTS_WAREHOUSING__5",
-      "operation_node_key": "550",
+      "operation_node_key": "520",
       "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
       "step_id": "5",
       "step_name": "仓库入库",
@@ -1298,7 +1195,7 @@
     },
     "FINISHED_PRODUCTS_WAREHOUSING__6": {
       "context_id": "FINISHED_PRODUCTS_WAREHOUSING__6",
-      "operation_node_key": "560",
+      "operation_node_key": "530",
       "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
       "step_id": "6",
       "step_name": "返回初始位",
@@ -1346,15 +1243,12 @@
     "410": "PAINTING__2",
     "420": "PAINTING__3",
     "430": "PAINTING__4",
-    "440": "PAINTING__5",
-    "450": "PAINTING__6",
-    "460": "PAINTING__7",
-    "480": "PHOTO_INSPECTION__1",
-    "510": "FINISHED_PRODUCTS_WAREHOUSING__1",
-    "520": "FINISHED_PRODUCTS_WAREHOUSING__2",
-    "530": "FINISHED_PRODUCTS_WAREHOUSING__3",
-    "540": "FINISHED_PRODUCTS_WAREHOUSING__4",
-    "550": "FINISHED_PRODUCTS_WAREHOUSING__5",
-    "560": "FINISHED_PRODUCTS_WAREHOUSING__6"
+    "450": "PHOTO_INSPECTION__1",
+    "480": "FINISHED_PRODUCTS_WAREHOUSING__1",
+    "490": "FINISHED_PRODUCTS_WAREHOUSING__2",
+    "500": "FINISHED_PRODUCTS_WAREHOUSING__3",
+    "510": "FINISHED_PRODUCTS_WAREHOUSING__4",
+    "520": "FINISHED_PRODUCTS_WAREHOUSING__5",
+    "530": "FINISHED_PRODUCTS_WAREHOUSING__6"
   }
 }

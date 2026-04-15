@@ -822,6 +822,10 @@ class OperationContractReasoner:
             guarantee = only_obj(guarantee, "completed")
             assumption = []
 
+        if prev_action.startswith("putDownTerminal_") and curr_action.startswith("pickUpTerminal_"):
+            guarantee = only_obj(guarantee, "put down")
+            assumption = []
+
         if prev_action.startswith("putDownTerminal_") and curr_action.startswith("reset_"):
             guarantee = only_obj(guarantee, "put down")
             assumption = [x for x in assumption if x.get("O") == "not at start position"]

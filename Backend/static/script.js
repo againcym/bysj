@@ -111,7 +111,12 @@ function bindOpenContract() {
       if (!response.ok || !data.ok) {
         throw new Error(data.error || '打开 Contract 失败');
       }
-      appendChat('assistant', '已启动 Contract 可视化工具，并同步最新的 output_contract_llmmain.xml。');
+      const syncErrors = Array.isArray(data.sync_errors) ? data.sync_errors : [];
+      if (syncErrors.length) {
+        appendChat('assistant', `已启动 Contract 可视化工具，但 Contract 文件未能自动同步到 tool1118。\n${syncErrors.join('\n')}`);
+      } else {
+        appendChat('assistant', '已启动 Contract 可视化工具，并同步最新的 output_contract_llmmain.xml。');
+      }
     } catch (error) {
       appendChat('error', error.message || '打开 Contract 失败');
     } finally {

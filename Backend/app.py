@@ -25,7 +25,7 @@ if str(CONTRACTS_DIR) not in sys.path:
 
 STATIC_DIR = PROJECT_ROOT / "Backend" / "static"
 INDEX_HTML = STATIC_DIR / "index.html"
-TOOL1118_DIR = PROJECT_ROOT / "tool1118"
+TOOL1118_DIR = Path(r"C:\Users\11769\Desktop\festo\tool1118-V3\tool1118")
 TOOL1118_START_EXE = TOOL1118_DIR / "start.exe"
 TOOL1118_SERVER_PUBLIC_RESULT_XML = TOOL1118_DIR / "server" / "public" / "result.xml"
 TOOL1118_VUE_ASSET_RESULT_XML = TOOL1118_DIR / "vue-cbt-reconstruction" / "src" / "assets" / "result.xml"
@@ -205,19 +205,14 @@ def open_contract_viewer() -> JSONResponse:
         )
 
     synced_paths: List[str] = []
+    sync_errors: List[str] = []
     for target in (TOOL1118_SERVER_PUBLIC_RESULT_XML, TOOL1118_VUE_ASSET_RESULT_XML):
         try:
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(contract_path, target)
             synced_paths.append(str(target))
         except Exception as exc:
-            return JSONResponse(
-                status_code=500,
-                content={
-                    "ok": False,
-                    "error": f"同步 Contract 到 {target} 失败: {exc}",
-                },
-            )
+            sync_errors.append(f"{target}: {exc}")
 
     creationflags = getattr(subprocess, "CREATE_NEW_CONSOLE", 0)
     try:
@@ -241,6 +236,7 @@ def open_contract_viewer() -> JSONResponse:
             "message": "已启动 Contract 可视化工具。",
             "contract_path": str(contract_path),
             "synced_paths": synced_paths,
+            "sync_errors": sync_errors,
         }
     )
 

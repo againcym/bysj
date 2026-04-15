@@ -236,6 +236,12 @@
         ],
         "clear_assumption": true
       },
+      "putDown_to_pickUp": {
+        "guarantee_prefers": [
+          "put down"
+        ],
+        "clear_assumption": true
+      },
       "putDown_to_reset": {
         "guarantee_prefers": [
           "put down"

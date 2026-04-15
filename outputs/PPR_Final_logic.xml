@@ -201,18 +201,6 @@
                 <step_desc>涂装机器臂5放回末端工具2</step_desc>
             </process_step>
             <process_step id="4">
-                <step_name>更换工具</step_name>
-                <step_desc>涂装机器臂5更换末端工具5</step_desc>
-            </process_step>
-            <process_step id="5">
-                <step_name>执行涂装</step_name>
-                <step_desc>涂装机器臂5根据蓝色写LUCKY字样信息进行涂装</step_desc>
-            </process_step>
-            <process_step id="6">
-                <step_name>放回工具</step_name>
-                <step_desc>涂装机器臂5放回末端工具5</step_desc>
-            </process_step>
-            <process_step id="7">
                 <step_name>返回初始位</step_name>
                 <step_desc>涂装机器臂5回到初始位置</step_desc>
             </process_step>
