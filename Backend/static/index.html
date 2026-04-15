@@ -90,6 +90,29 @@
         </div>
         <pre id="raw-viewer" class="code-viewer">运行完成后可在这里查看源文件。</pre>
       </section>
+
+      <details id="simulation-shell" class="surface-card simulation-shell">
+        <summary class="section-head section-head-wrap simulation-head">
+          <h2>Contract 仿真</h2>
+        </summary>
+        <div class="simulation-body">
+          <div class="download-row simulation-controls">
+            <button class="download-link sim-btn sim-start-btn" id="sim-start-btn" type="button">开始仿真</button>
+            <label class="toggle-chip" for="sim-auto-inputs">
+              <input id="sim-auto-inputs" type="checkbox" checked>
+              <span>自动注入输入/反馈</span>
+            </label>
+            <button class="download-link sim-btn" id="sim-reset-btn" type="button">重置仿真</button>
+            <button class="download-link sim-btn" id="sim-step-btn" type="button">单步推进</button>
+            <button class="download-link sim-btn" id="sim-run-btn" type="button">运行到底</button>
+          </div>
+          <div id="simulation-summary" class="metric-strip"></div>
+          <div id="simulation-current" class="card-grid simulation-grid empty-state">
+            当前未启动仿真。请先生成本次 Contract，再点击“开始仿真”。
+          </div>
+          <pre id="simulation-log" class="code-viewer simulation-viewer">暂无仿真记录。</pre>
+        </div>
+      </details>
     </main>
   </div>
 

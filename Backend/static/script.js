@@ -22,6 +22,10 @@ const state = {
   artifacts: {},
   finalResult: null,
   statusLines: [],
+  simulation: null,
+  simulationReady: false,
+  simulationStarted: false,
+  simulationBusy: false,
 };
 
 const examplesEl = document.getElementById('examples');
@@ -36,6 +40,15 @@ const summaryMetrics = document.getElementById('summary-metrics');
 const stageSections = document.getElementById('stage-sections');
 const rawViewer = document.getElementById('raw-viewer');
 const openContractBtn = document.getElementById('open-contract-btn');
+const simulationShell = document.getElementById('simulation-shell');
+const simulationSummary = document.getElementById('simulation-summary');
+const simulationCurrent = document.getElementById('simulation-current');
+const simulationLog = document.getElementById('simulation-log');
+const simulationStartBtn = document.getElementById('sim-start-btn');
+const simulationAutoInputs = document.getElementById('sim-auto-inputs');
+const simulationResetBtn = document.getElementById('sim-reset-btn');
+const simulationStepBtn = document.getElementById('sim-step-btn');
+const simulationRunBtn = document.getElementById('sim-run-btn');
 
 init();
 
@@ -43,8 +56,10 @@ async function init() {
   bindComposer();
   bindSourceToolbar();
   bindOpenContract();
+  bindSimulationControls();
   await loadExamples();
   renderMetrics();
+  renderSimulationPlaceholder('当前未启动仿真。请先生成本次 Contract，再点击“开始仿真”。');
 }
 
 async function loadExamples() {
@@ -126,6 +141,438 @@ function bindOpenContract() {
   });
 }
 
+function bindSimulationControls() {
+  if (simulationCurrent) {
+    simulationCurrent.addEventListener('click', event => {
+      const injectBtn = event.target.closest('[data-sim-inject]');
+      if (injectBtn) {
+        const phase = injectBtn.dataset.phase || '';
+        const text = decodeURIComponent(injectBtn.dataset.text || '');
+        const signal = decodeURIComponent(injectBtn.dataset.signal || '');
+        void injectSimulationInputs(phase, [{ text, signal }]);
+        return;
+      }
+      const injectAllBtn = event.target.closest('[data-sim-inject-all]');
+      if (injectAllBtn) {
+        const phase = injectAllBtn.dataset.phase || '';
+        void injectSimulationInputs(phase, []);
+      }
+    });
+  }
+  if (simulationStartBtn) {
+    simulationStartBtn.addEventListener('click', () => {
+      void startSimulation();
+    });
+  }
+  if (simulationResetBtn) {
+    simulationResetBtn.addEventListener('click', () => {
+      void resetSimulation();
+    });
+  }
+  if (simulationStepBtn) {
+    simulationStepBtn.addEventListener('click', () => {
+      void stepSimulation();
+    });
+  }
+  if (simulationRunBtn) {
+    simulationRunBtn.addEventListener('click', () => {
+      void runSimulation();
+    });
+  }
+}
+
+function simulationPayload(extra = {}) {
+  return {
+    auto_apply_assumptions: !!simulationAutoInputs?.checked,
+    ...extra,
+  };
+}
+
+function setSimulationBusy(busy) {
+  state.simulationBusy = busy;
+  updateSimulationControls(busy);
+  if (simulationCurrent) {
+    simulationCurrent
+      .querySelectorAll('[data-sim-inject], [data-sim-inject-all]')
+      .forEach(btn => {
+        btn.disabled = busy;
+      });
+  }
+}
+
+async function startSimulation() {
+  if (!state.simulationReady) {
+    appendChat('error', '请先完成本次 Contract 生成，再开始仿真。');
+    return;
+  }
+  if (simulationShell) simulationShell.open = true;
+  await resetSimulation(true);
+  if (state.simulationStarted) {
+    appendChat('assistant', '已加载本次 Contract 仿真。');
+  }
+}
+
+async function resetSimulation(silent = false) {
+  setSimulationBusy(true);
+  try {
+    const response = await fetch('/api/simulation/reset', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(simulationPayload()),
+    });
+    const data = await response.json();
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || '重置仿真失败');
+    }
+    state.simulationStarted = true;
+    state.simulation = data.simulation || null;
+    renderSimulation();
+    if (!silent) {
+      appendChat('assistant', '已重置 Contract 仿真。');
+    }
+  } catch (error) {
+    state.simulationStarted = false;
+    if (!silent) {
+      appendChat('error', error.message || '重置仿真失败');
+    }
+    renderSimulationEmpty(error.message || '重置仿真失败。');
+  } finally {
+    setSimulationBusy(false);
+  }
+}
+
+async function stepSimulation() {
+  if (!state.simulationStarted) {
+    appendChat('error', '请先点击“开始仿真”。');
+    return;
+  }
+  setSimulationBusy(true);
+  try {
+    const response = await fetch('/api/simulation/step', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(simulationPayload()),
+    });
+    const data = await response.json();
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || '单步仿真失败');
+    }
+    state.simulation = data.simulation || null;
+    renderSimulation();
+  } catch (error) {
+    appendChat('error', error.message || '单步仿真失败');
+  } finally {
+    setSimulationBusy(false);
+  }
+}
+
+async function runSimulation() {
+  if (!state.simulationStarted) {
+    appendChat('error', '请先点击“开始仿真”。');
+    return;
+  }
+  setSimulationBusy(true);
+  try {
+    const response = await fetch('/api/simulation/run', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(simulationPayload({ max_steps: 512 })),
+    });
+    const data = await response.json();
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || '运行仿真失败');
+    }
+    state.simulation = data.simulation || null;
+    renderSimulation();
+  } catch (error) {
+    appendChat('error', error.message || '运行仿真失败');
+  } finally {
+    setSimulationBusy(false);
+  }
+}
+
+async function injectSimulationInputs(phase, items = []) {
+  if (!state.simulationStarted) {
+    appendChat('error', '请先点击“开始仿真”。');
+    return;
+  }
+  setSimulationBusy(true);
+  try {
+    const response = await fetch('/api/simulation/inject', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phase, items }),
+    });
+    const data = await response.json();
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || '手动注入输入失败');
+    }
+    state.simulation = data.simulation || null;
+    renderSimulation();
+  } catch (error) {
+    appendChat('error', error.message || '手动注入输入失败');
+  } finally {
+    setSimulationBusy(false);
+  }
+}
+
+function renderSimulationEmpty(message) {
+  if (simulationSummary) simulationSummary.innerHTML = '';
+  if (simulationCurrent) {
+    simulationCurrent.className = 'card-grid simulation-grid empty-state';
+    simulationCurrent.textContent = message;
+  }
+  if (simulationLog) {
+    simulationLog.textContent = '暂无仿真记录。';
+  }
+  updateSimulationControls();
+}
+
+function renderSimulationPlaceholder(message) {
+  state.simulation = null;
+  renderSimulationEmpty(message);
+}
+
+function updateSimulationControls(busy = false) {
+  if (simulationStartBtn) {
+    simulationStartBtn.disabled = busy || !state.simulationReady || state.simulationStarted;
+  }
+  [simulationResetBtn, simulationStepBtn, simulationRunBtn].forEach(btn => {
+    if (btn) btn.disabled = busy || !state.simulationStarted;
+  });
+}
+
+function renderSimulation() {
+  const sim = state.simulation;
+  if (!sim) {
+    renderSimulationEmpty('当前还没有可用的 Contract 仿真。');
+    return;
+  }
+
+  const summary = sim.summary || {};
+  const metrics = [
+    ['总链路数', summary.total_links || 0],
+    ['已执行', summary.executed_links || 0],
+    ['待执行', summary.pending_links || 0],
+    ['当前步', sim.done ? '完成' : (summary.current_step || '-')],
+    ['激活输出', summary.active_output_count || 0],
+    ['已观测输入', summary.observed_input_count || 0],
+  ];
+  simulationSummary.innerHTML = metrics.map(([label, value]) => `
+    <div class="metric-card">
+      <div class="metric-label">${escapeHtml(label)}</div>
+      <div class="metric-value">${escapeHtml(String(value))}</div>
+    </div>
+  `).join('');
+
+  const focusTransition = sim.current_transition || sim.last_transition;
+  const currentHtml = focusTransition ? renderSimulationTransitionCard(focusTransition, sim) : `
+    <article class="info-card">
+      <div class="card-title-row">
+        <div>
+          <h4>仿真完成</h4>
+          <div class="muted small-text">当前没有可展示的 operation / contract 执行项。</div>
+        </div>
+      </div>
+    </article>
+  `;
+
+  const outputSnapshot = sim.output_snapshot || [];
+  const inputSnapshot = sim.input_snapshot || [];
+  simulationCurrent.className = 'card-grid simulation-grid';
+  simulationCurrent.innerHTML = `
+    ${currentHtml}
+    <article class="info-card">
+      <div class="card-title-row">
+        <div>
+          <h4>输出命令快照</h4>
+          <div class="muted small-text">operation 下发到 PLC / Factory I/O 的输出命令</div>
+        </div>
+        <span class="minor-chip">${escapeHtml(String(outputSnapshot.length))}</span>
+      </div>
+      ${renderSimulationOutputList(outputSnapshot)}
+    </article>
+    <article class="info-card">
+      <div class="card-title-row">
+        <div>
+          <h4>输入 / 反馈快照</h4>
+          <div class="muted small-text">contract 前置输入与执行反馈的当前观测值</div>
+        </div>
+        <span class="minor-chip">${escapeHtml(String(inputSnapshot.length))}</span>
+      </div>
+      ${renderSimulationInputList(inputSnapshot)}
+    </article>
+  `;
+
+  simulationLog.textContent = (sim.recent_events || []).map(item => {
+    const prefix = item.link_index ? `[#${item.link_index}] ` : '';
+    return `${prefix}${item.message}`;
+  }).join('\n') || '暂无仿真记录。';
+  updateSimulationControls();
+}
+
+function renderSimulationTransitionCard(transition, sim) {
+  const command = transition.command || transition.operation || {};
+  const contract = transition.contract || {};
+  const nextOp = transition.next_operation || {};
+  return `
+    <article class="info-card">
+      <div class="card-title-row">
+        <div>
+          <h4>${escapeHtml(transition.title || '当前链路')}</h4>
+          <div class="muted small-text">${escapeHtml(transition.process_id || transition.kind || '')}</div>
+        </div>
+        <span class="minor-chip">${escapeHtml(renderSimulationStatusLabel(sim, transition))}</span>
+      </div>
+      <div class="subblock compact-block">
+        <div class="subblock-title">当前 operation 输出</div>
+        ${renderSimulationOperationCard(command, nextOp)}
+      </div>
+      <div class="subblock compact-block">
+        <div class="subblock-title">Contract 前置输入检查</div>
+        ${renderSimulationCheckList(contract.preconditions, 'precondition', '当前没有前置输入约束。')}
+      </div>
+      <div class="subblock compact-block">
+        <div class="subblock-title">Contract 反馈检查</div>
+        ${renderSimulationCheckList(contract.feedback, 'feedback', '当前没有反馈输入约束。')}
+      </div>
+    </article>
+  `;
+}
+
+function renderSimulationStatusLabel(sim, transition) {
+  if (sim.done && !sim.blocked) return 'Done';
+  const mapping = {
+    'blocked-precondition': '等待前置输入',
+    'blocked-feedback': '等待反馈输入',
+    passed: 'Passed',
+    pending: 'Pending',
+    running: 'Running',
+  };
+  return mapping[transition?.status] || (sim.blocked ? 'Blocked' : 'Running');
+}
+
+function renderSimulationOperationCard(command, nextOp) {
+  const meta = [
+    command.output_device || command.device_name || '',
+    command.output_address || '',
+    command.output_signal || command.signal || '',
+  ].filter(Boolean).join(' | ');
+  const nextText = nextOp?.display_text ? `
+    <div class="muted small-text">下一 operation: ${escapeHtml(nextOp.display_text)}</div>
+  ` : '';
+  return `
+    <div class="simulation-list">
+      <div class="simulation-list-item">
+        <strong>${escapeHtml(command.display_text || command.text || command.action_signal || '无输出命令')}</strong>
+        <div>${escapeHtml(command.step_desc || '当前链路没有可直接下发的 operation 输出。')}</div>
+        <div class="muted small-text">${escapeHtml(meta)}</div>
+        ${renderSimulationPayloadSummary(command.register_payload || command.payload || {})}
+        ${nextText}
+      </div>
+    </div>
+  `;
+}
+
+function renderSimulationPayloadSummary(payload) {
+  if (!payload || !Object.keys(payload).length) {
+    return '';
+  }
+  const summary = Object.entries(payload)
+    .map(([key, value]) => `${key}: ${typeof value === 'object' ? JSON.stringify(value) : String(value)}`)
+    .join(' | ');
+  return `<div class="muted small-text">${escapeHtml(summary)}</div>`;
+}
+
+function renderSimulationCheckList(items, phase, emptyText) {
+  if (!items || !items.length) {
+    return `<div class="empty-inline">${escapeHtml(emptyText)}</div>`;
+  }
+  const injectable = items.filter(item => item.status === 'missing' || item.status === 'pending');
+  const bulkAction = injectable.length ? `
+    <div class="simulation-inject-actions">
+      <button class="download-link sim-btn sim-inline-btn" type="button" data-sim-inject-all="1" data-phase="${escapeHtml(phase)}" ${state.simulationBusy ? 'disabled' : ''}>
+        全部注入
+      </button>
+    </div>
+  ` : '';
+  return `${bulkAction}<div class="simulation-list">${items.map(item => `
+    <div class="simulation-list-item">
+      <div>${escapeHtml(item.text || '')}</div>
+      <div class="muted small-text">${escapeHtml([
+        renderSimulationCheckStatus(item.status),
+        item.signal || '',
+        item.address || '',
+        item.origin || '',
+      ].filter(Boolean).join(' | '))}</div>
+      ${renderSimulationInjectButton(item, phase)}
+    </div>
+  `).join('')}</div>`;
+}
+
+function renderSimulationInjectButton(item, phase) {
+  if (!(item.status === 'missing' || item.status === 'pending')) {
+    return '';
+  }
+  const label = phase === 'precondition' ? '注入前置输入' : '注入反馈';
+  return `
+    <div class="simulation-inject-actions">
+      <button
+        class="download-link sim-btn sim-inline-btn"
+        type="button"
+        data-sim-inject="1"
+        data-phase="${escapeHtml(phase)}"
+        data-text="${encodeURIComponent(item.text || '')}"
+        data-signal="${encodeURIComponent(item.signal || '')}"
+        ${state.simulationBusy ? 'disabled' : ''}
+      >
+        ${label}
+      </button>
+    </div>
+  `;
+}
+
+function renderSimulationCheckStatus(status) {
+  const mapping = {
+    ready: '已满足',
+    observed: '已观测',
+    missing: '缺失',
+    pending: '待反馈',
+  };
+  return mapping[status] || status || '';
+}
+
+function renderSimulationOutputList(items) {
+  if (!items || !items.length) {
+    return '<div class="empty-inline">当前还没有输出命令被下发。</div>';
+  }
+  return `<div class="simulation-list">${items.map(item => `
+    <div class="simulation-list-item">
+      <strong>${escapeHtml(item.signal || item.text || '')}</strong>
+      <div>${escapeHtml(item.step_desc || item.text || '')}</div>
+      <div class="muted small-text">${escapeHtml([item.device, item.address, item.process_id ? `process:${item.process_id}` : '', item.step_id ? `step:${item.step_id}` : ''].filter(Boolean).join(' | '))}</div>
+    </div>
+  `).join('')}</div>`;
+}
+
+function renderSimulationInputList(items) {
+  if (!items || !items.length) {
+    return '<div class="empty-inline">当前还没有输入或反馈被观测到。</div>';
+  }
+  return `<div class="simulation-list">${items.map(item => `
+    <div class="simulation-list-item">
+      <strong>${escapeHtml(item.signal || item.subject || item.text || '')}</strong>
+      <div>${escapeHtml(item.text || '')}</div>
+      <div class="muted small-text">${escapeHtml([
+        item.device,
+        item.address,
+        item.phase === 'precondition' ? '前置输入' : item.phase === 'feedback' ? '反馈输入' : item.phase,
+        item.origin === 'mocked' ? '仿真注入' : item.origin,
+      ].filter(Boolean).join(' | '))}</div>
+    </div>
+  `).join('')}</div>`;
+}
+
 function resetRun(order) {
   state.summary = {
     order,
@@ -150,11 +597,16 @@ function resetRun(order) {
   state.artifacts = {};
   state.finalResult = null;
   state.statusLines = [];
+  state.simulation = null;
+  state.simulationReady = false;
+  state.simulationStarted = false;
   stageSections.className = 'stage-sections';
   stageSections.innerHTML = '';
   liveStatus.innerHTML = '';
   progressSteps.innerHTML = '';
   rawViewer.textContent = '运行中，完成后可查看源文件。';
+  if (simulationShell) simulationShell.open = false;
+  renderSimulationPlaceholder('当前未启动仿真。请等待本次 Contract 生成完成后，再点击“开始仿真”。');
   renderMetrics();
   setRunning(true);
   setRuntimeStatus('Running', 'running');
@@ -233,8 +685,12 @@ function handlePipelineEvent(event) {
     state.finalResult = event.result || {};
     state.artifacts = state.finalResult.artifacts || {};
     state.summary = { ...state.summary, ...(state.finalResult.summary || {}) };
+    state.simulation = null;
+    state.simulationReady = true;
+    state.simulationStarted = false;
     renderMetrics();
     renderRawSource(document.querySelector('.source-btn.active')?.dataset.source || 'ppr_xml');
+    renderSimulationPlaceholder('本次 Contract 已生成。点击“开始仿真”后，将按这一次的结果加载工艺逻辑。');
     return;
   }
 

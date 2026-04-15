@@ -84,7 +84,7 @@
     </Oblib>
     <NodeArray>
         <Node key="100" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="110" text="RAW_MATERIAL_HANDLING_CHASSIS" textt="RAW_MATERIAL_HANDLING_CHASSIS" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="110" text="RAW_MATERIAL_HANDLING_BACK" textt="RAW_MATERIAL_HANDLING_BACK" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="120" text="null" textt="outbound|ARM1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="130" text="null" textt="reset|ARM1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="140" text="null" textt="forward|conveyor belt1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
@@ -100,7 +100,7 @@
         <Node key="240" text="null" textt="move out|ARM2" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="250" text="null" textt="reset|ARM2" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="260" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="270" text="RAW_MATERIAL_HANDLING_BODY" textt="RAW_MATERIAL_HANDLING_BODY" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="270" text="RAW_MATERIAL_HANDLING_SCREEN" textt="RAW_MATERIAL_HANDLING_SCREEN" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="280" text="null" textt="outbound|ARM1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="290" text="null" textt="reset|ARM1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="300" text="null" textt="forward|conveyor belt1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
@@ -116,18 +116,21 @@
         <Node key="400" text="null" textt="pick up the terminal|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="410" text="null" textt="track painting|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="420" text="null" textt="put down the terminal|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="430" text="null" textt="reset|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="440" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="450" text="null" textt="photo inspection|camera" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="460" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="470" text="FINISHED_PRODUCTS_WAREHOUSING" textt="FINISHED_PRODUCTS_WAREHOUSING" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="480" text="null" textt="move in|ARM6" type="Operation" category="Operation" group="470" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="490" text="null" textt="reset|ARM6" type="Operation" category="Operation" group="470" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="500" text="null" textt="backward|conveyor belt2" type="Operation" category="Operation" group="470" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="510" text="null" textt="stop|conveyor belt2" type="Operation" category="Operation" group="470" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="520" text="null" textt="inbound|ARM7" type="Operation" category="Operation" group="470" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="530" text="null" textt="reset|ARM7" type="Operation" category="Operation" group="470" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="540" text="null" textt="release|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="430" text="null" textt="pick up the terminal|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="440" text="null" textt="track painting|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="450" text="null" textt="put down the terminal|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="460" text="null" textt="reset|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="470" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="480" text="null" textt="photo inspection|camera" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="490" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="500" text="FINISHED_PRODUCTS_WAREHOUSING" textt="FINISHED_PRODUCTS_WAREHOUSING" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="510" text="null" textt="move in|ARM6" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="520" text="null" textt="reset|ARM6" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="530" text="null" textt="backward|conveyor belt2" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="540" text="null" textt="stop|conveyor belt2" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="550" text="null" textt="inbound|ARM7" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="560" text="null" textt="reset|ARM7" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="570" text="null" textt="release|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
     </NodeArray>
     <LinkArray>
         <Link from="100" to="110">
@@ -199,10 +202,10 @@
                         </tokenGroup>
                     </Condition>
                     <Condition>
-                        <tokenDesc>ARM2 is at start position</tokenDesc>
+                        <tokenDesc>ARM2Mode</tokenDesc>
                         <tokenGroup>
                             <token type="Variable" text="ARM2" />
-                            <token type="Condition" text="ARM2 is at start position" />
+                            <token type="Condition" text="ARM2Mode" />
                         </tokenGroup>
                     </Condition>
                     <Condition>
@@ -342,9 +345,9 @@
                 </Guarantee>
                 <Assumption>
                     <Condition>
-                        <tokenDesc>ConveyorBelt1 second sensor is triggered</tokenDesc>
+                        <tokenDesc>Conveyorbelt1 second sensor is triggered</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="ConveyorBelt1 second sensor" />
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
                             <token type="Operator" text="is" />
                             <token type="Value" text="triggered" />
                         </tokenGroup>
@@ -361,7 +364,7 @@
                     <Condition>
                         <tokenDesc>CB1Sensor2</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="ConveyorBelt1 second sensor" />
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
                             <token type="Condition" text="CB1Sensor2" />
                         </tokenGroup>
                     </Condition>
@@ -485,9 +488,9 @@
             <Contract>
                 <Guarantee>
                     <Condition>
-                        <tokenDesc>Raw material hanlding is completed</tokenDesc>
+                        <tokenDesc>Raw Material Handling Back is completed</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="Raw material hanlding" />
+                            <token type="Variable" text="Raw Material Handling Back" />
                             <token type="Operator" text="is" />
                             <token type="Value" text="completed" />
                         </tokenGroup>
@@ -725,9 +728,9 @@
                 </Guarantee>
                 <Assumption>
                     <Condition>
-                        <tokenDesc>ConveyorBelt1 second sensor is triggered</tokenDesc>
+                        <tokenDesc>Conveyorbelt1 second sensor is triggered</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="ConveyorBelt1 second sensor" />
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
                             <token type="Operator" text="is" />
                             <token type="Value" text="triggered" />
                         </tokenGroup>
@@ -744,7 +747,7 @@
                     <Condition>
                         <tokenDesc>CB1Sensor2</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="ConveyorBelt1 second sensor" />
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
                             <token type="Condition" text="CB1Sensor2" />
                         </tokenGroup>
                     </Condition>
@@ -1108,9 +1111,9 @@
                 </Guarantee>
                 <Assumption>
                     <Condition>
-                        <tokenDesc>ConveyorBelt1 second sensor is triggered</tokenDesc>
+                        <tokenDesc>Conveyorbelt1 second sensor is triggered</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="ConveyorBelt1 second sensor" />
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
                             <token type="Operator" text="is" />
                             <token type="Value" text="triggered" />
                         </tokenGroup>
@@ -1127,7 +1130,7 @@
                     <Condition>
                         <tokenDesc>CB1Sensor2</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="ConveyorBelt1 second sensor" />
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
                             <token type="Condition" text="CB1Sensor2" />
                         </tokenGroup>
                     </Condition>
@@ -1251,9 +1254,9 @@
             <Contract>
                 <Guarantee>
                     <Condition>
-                        <tokenDesc>Raw material hanlding is completed</tokenDesc>
+                        <tokenDesc>Raw Material Handling Screen is completed</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="Raw material hanlding" />
+                            <token type="Variable" text="Raw Material Handling Screen" />
                             <token type="Operator" text="is" />
                             <token type="Value" text="completed" />
                         </tokenGroup>
@@ -1563,6 +1566,111 @@
                 </Guarantee>
                 <Assumption>
                     <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TerminalController</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Condition" text="TerminalController" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="430" to="440">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Terminal is picked up</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="picked up" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TerminalController</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Condition" text="TerminalController" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="440" to="450">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Track painting is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track painting" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TrackPainting</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track painting" />
+                            <token type="Condition" text="TrackPainting" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="450" to="460">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Terminal is put down</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="put down" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
                         <tokenDesc>ARM5 is not at start position</tokenDesc>
                         <tokenGroup>
                             <token type="Variable" text="ARM5" />
@@ -1595,7 +1703,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="390" to="440">
+        <Link from="390" to="470">
             <Contract>
                 <Guarantee>
                     <Condition>
@@ -1627,7 +1735,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="440" to="450">
+        <Link from="470" to="480">
             <Contract>
                 <Guarantee>
                     <Condition>
@@ -1688,7 +1796,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="450" to="460">
+        <Link from="480" to="490">
             <Contract>
                 <Guarantee>
                     <Condition>
@@ -1723,7 +1831,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="460" to="470">
+        <Link from="490" to="500">
             <Contract>
                 <Guarantee>
                     <Condition>
@@ -1814,7 +1922,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="480" to="490">
+        <Link from="510" to="520">
             <Contract>
                 <Guarantee>
                     <Condition>
@@ -1875,7 +1983,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="490" to="500">
+        <Link from="520" to="530">
             <Contract>
                 <Guarantee>
                     <Condition>
@@ -1921,7 +2029,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="500" to="510">
+        <Link from="530" to="540">
             <Contract>
                 <Guarantee>
                     <Condition>
@@ -1967,7 +2075,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="510" to="520">
+        <Link from="540" to="550">
             <Contract>
                 <Guarantee>
                     <Condition>
@@ -2013,7 +2121,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="520" to="530">
+        <Link from="550" to="560">
             <Contract>
                 <Guarantee>
                     <Condition>
@@ -2074,7 +2182,7 @@
                 </Invariant>
             </Contract>
         </Link>
-        <Link from="470" to="540">
+        <Link from="500" to="570">
             <Contract>
                 <Guarantee>
                     <Condition>

@@ -15,6 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+from Simulation import ContractRuntimeError, ContractSimulationRuntime
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 CONTRACTS_DIR = PROJECT_ROOT / "Transform" / "contracts"
@@ -31,6 +32,7 @@ TOOL1118_SERVER_PUBLIC_RESULT_XML = TOOL1118_DIR / "server" / "public" / "result
 TOOL1118_VUE_ASSET_RESULT_XML = TOOL1118_DIR / "vue-cbt-reconstruction" / "src" / "assets" / "result.xml"
 
 MODULE_IMPORT_ERROR: Optional[BaseException] = None
+SIMULATION_RUNTIME: Optional[ContractSimulationRuntime] = None
 
 # ---------------------------------------------------------------------------
 # Safe imports from project
@@ -131,6 +133,37 @@ DEFAULT_STAGE_META = [
 class PipelineRequest(BaseModel):
     order: str = Field(..., min_length=1, description="用户订单文本")
     use_llm: bool = Field(True, description="若环境可用，允许调用 LLM 辅助")
+
+
+# ---------------------------------------------------------------------------
+# Simulation models
+# ---------------------------------------------------------------------------
+class SimulationResetRequest(BaseModel):
+    auto_apply_assumptions: bool = Field(
+        True,
+        description="Whether to auto-complete required precondition inputs and feedback signals in simulation",
+    )
+
+
+class SimulationRunRequest(BaseModel):
+    auto_apply_assumptions: bool = Field(
+        True,
+        description="Whether to auto-complete required precondition inputs and feedback signals in simulation",
+    )
+    max_steps: int = Field(256, ge=1, le=5000, description="Maximum number of simulation steps")
+
+
+class SimulationInjectItem(BaseModel):
+    text: str = Field(..., description="Condition text to inject")
+    signal: str = Field("", description="Optional signal name of the condition")
+
+
+class SimulationInjectRequest(BaseModel):
+    phase: str = Field(..., pattern="^(precondition|feedback)$", description="Injection phase")
+    items: List[SimulationInjectItem] = Field(
+        default_factory=list,
+        description="Conditions to inject; empty means inject all available conditions in the phase",
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -239,6 +272,107 @@ def open_contract_viewer() -> JSONResponse:
             "sync_errors": sync_errors,
         }
     )
+
+
+def _get_simulation_runtime(force_reload: bool = False) -> ContractSimulationRuntime:
+    global SIMULATION_RUNTIME
+    if force_reload or SIMULATION_RUNTIME is None:
+        SIMULATION_RUNTIME = ContractSimulationRuntime(
+            contract_path=Path(CONTRACT_OUTPUT_LLMMAIN_XML),
+            operation_context_path=Path(OPERATION_CONTEXT_JSON),
+            signal_definition_path=Path(SIGNAL_OUTPUT_XML),
+        )
+    return SIMULATION_RUNTIME
+
+
+@app.get("/api/simulation/state")
+def simulation_state() -> JSONResponse:
+    try:
+        runtime = _get_simulation_runtime(force_reload=False)
+        return JSONResponse({"ok": True, "simulation": runtime.get_state()})
+    except ContractRuntimeError as exc:
+        return JSONResponse(status_code=404, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
+
+
+@app.post("/api/simulation/reset")
+def simulation_reset(req: SimulationResetRequest) -> JSONResponse:
+    try:
+        runtime = _get_simulation_runtime(force_reload=True)
+        return JSONResponse(
+            {"ok": True, "simulation": runtime.reset(auto_apply_assumptions=req.auto_apply_assumptions)}
+        )
+    except ContractRuntimeError as exc:
+        return JSONResponse(status_code=404, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
+
+
+@app.post("/api/simulation/step")
+def simulation_step(req: SimulationResetRequest) -> JSONResponse:
+    try:
+        runtime = _get_simulation_runtime(force_reload=False)
+        return JSONResponse(
+            {"ok": True, "simulation": runtime.step(auto_apply_assumptions=req.auto_apply_assumptions)}
+        )
+    except ContractRuntimeError as exc:
+        return JSONResponse(status_code=404, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
+
+
+@app.post("/api/simulation/run")
+def simulation_run(req: SimulationRunRequest) -> JSONResponse:
+    try:
+        runtime = _get_simulation_runtime(force_reload=False)
+        return JSONResponse(
+            {
+                "ok": True,
+                "simulation": runtime.run(
+                    max_steps=req.max_steps,
+                    auto_apply_assumptions=req.auto_apply_assumptions,
+                ),
+            }
+        )
+    except ContractRuntimeError as exc:
+        return JSONResponse(status_code=404, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
+
+
+@app.post("/api/simulation/inject")
+def simulation_inject(req: SimulationInjectRequest) -> JSONResponse:
+    try:
+        runtime = _get_simulation_runtime(force_reload=False)
+        return JSONResponse(
+            {
+                "ok": True,
+                "simulation": runtime.inject_inputs(
+                    phase=req.phase,
+                    items=[item.model_dump() for item in req.items],
+                ),
+            }
+        )
+    except ContractRuntimeError as exc:
+        return JSONResponse(status_code=404, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
 
 
 @app.post("/api/pipeline")

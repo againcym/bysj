@@ -1238,6 +1238,115 @@ a { text-decoration: none; }
   background: linear-gradient(180deg, #fde68a 0%, #fcd34d 100%);
 }
 
+.simulation-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.simulation-shell {
+  overflow: hidden;
+}
+
+.simulation-shell > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.simulation-shell > summary::-webkit-details-marker {
+  display: none;
+}
+
+.simulation-head {
+  user-select: none;
+}
+
+.simulation-head::after {
+  content: '展开';
+  margin-left: auto;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.simulation-shell[open] .simulation-head::after {
+  content: '收起';
+}
+
+.simulation-body {
+  padding-top: 4px;
+}
+
+.toggle-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+}
+
+.sim-btn {
+  border-color: #99f6e4;
+  background: linear-gradient(180deg, #ecfeff 0%, #ccfbf1 100%);
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.sim-start-btn {
+  border-color: #7dd3fc;
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+  color: #1d4ed8;
+}
+
+.sim-btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #ccfbf1 0%, #99f6e4 100%);
+}
+
+.sim-btn.sim-start-btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.simulation-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.simulation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.simulation-list-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #f8fafc;
+  padding: 10px 12px;
+  line-height: 1.55;
+}
+
+.simulation-inject-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sim-inline-btn {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.simulation-viewer {
+  margin-top: 12px;
+  max-height: 320px;
+}
+
 .source-toolbar {
   display: flex;
   flex-wrap: wrap;
