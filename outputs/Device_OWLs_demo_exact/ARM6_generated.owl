@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/arm1_sm#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://www.semanticweb.org/ontologies/arm1_sm">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/arm1_sm" />
+    <owl:Class rdf:about="#State" />
+    <owl:ObjectProperty rdf:about="#moveOut_ARM6">
+        <rdfs:label>move out (Q3.0)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#moveIn_ARM6">
+        <rdfs:label>move in (Q3.1)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#reset_ARM6">
+        <rdfs:label>reset (Q3.2)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:NamedIndividual rdf:about="#AtStartPosition">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>at start position | ARM6Mode</rdfs:label>
+        <moveOut_ARM6 rdf:resource="#MoveoutCompleted" />
+        <moveIn_ARM6 rdf:resource="#MoveinCompleted" />
+        <reset_ARM6 rdf:resource="#AtStartPosition" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#MoveoutCompleted">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>not at start position | ARM6Mode &amp;&amp; completed | ARM6Moveout</rdfs:label>
+        <reset_ARM6 rdf:resource="#AtStartPosition" />
+        <moveIn_ARM6 rdf:resource="#MoveinCompleted" />
+        <moveOut_ARM6 rdf:resource="#MoveoutCompleted" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#MoveinCompleted">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>not at start position | ARM6Mode &amp;&amp; completed | ARM6Movein</rdfs:label>
+        <reset_ARM6 rdf:resource="#AtStartPosition" />
+        <moveOut_ARM6 rdf:resource="#MoveoutCompleted" />
+        <moveIn_ARM6 rdf:resource="#MoveinCompleted" />
+    </owl:NamedIndividual>
+</rdf:RDF>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/arm1_sm#"
+     xml:base="http://www.semanticweb.org/ontologies/arm1_sm"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/arm1_sm"/>
+    <owl:Class rdf:about="#State"/>
+
+    <owl:ObjectProperty rdf:about="#outbound_ARM7"><rdfs:label>outbound (Q4.0)</rdfs:label></owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#inbound_ARM7"><rdfs:label>inbound (Q4.1)</rdfs:label></owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#reset_ARM7"><rdfs:label>reset (Q3.7)</rdfs:label></owl:ObjectProperty>
+
+    <owl:NamedIndividual rdf:about="#AtStartPosition">
+        <rdf:type rdf:resource="#State"/>
+        <rdfs:label>at start position | ARM7Mode</rdfs:label>
+        <outbound_ARM7 rdf:resource="#OutboundCompleted"/>
+        <inbound_ARM7 rdf:resource="#InboundCompleted"/>
+        <reset_ARM7 rdf:resource="#AtStartPosition"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#OutboundCompleted">
+        <rdf:type rdf:resource="#State"/>
+        <rdfs:label>not at start position | ARM7Mode &amp;&amp; completed | ARM7Outbound</rdfs:label>
+        <reset_ARM7 rdf:resource="#AtStartPosition"/>
+        <inbound_ARM7 rdf:resource="#InboundCompleted"/>
+        <outbound_ARM7 rdf:resource="#OutboundCompleted"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#InboundCompleted">
+        <rdf:type rdf:resource="#State"/>
+        <rdfs:label>not at start position | ARM7Mode &amp;&amp; completed | ARM7Inbound</rdfs:label>
+        <reset_ARM7 rdf:resource="#AtStartPosition"/>
+        <inbound_ARM7 rdf:resource="#OutboundCompleted"/>
+        <inbound_ARM1 rdf:resource="#InboundCompleted"/>
+    </owl:NamedIndividual>
+</rdf:RDF>

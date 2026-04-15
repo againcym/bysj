@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/arm1_sm#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://www.semanticweb.org/ontologies/arm1_sm">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/arm1_sm" />
+    <owl:Class rdf:about="#State" />
+    <owl:ObjectProperty rdf:about="#pickUpTerminal_ARM5">
+        <rdfs:label>pick up the terminal (Q2.4)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#trackPainting_ARM5">
+        <rdfs:label>track painting (Q2.5)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#putDownTerminal_ARM5">
+        <rdfs:label>put down the terminal (Q2.6)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#reset_ARM5">
+        <rdfs:label>reset (Q2.7)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:NamedIndividual rdf:about="#AtStartPosition">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>at start position | ARM5Mode</rdfs:label>
+        <pickUpTerminal_ARM5 rdf:resource="#PickupCompleted" />
+        <trackPainting_ARM5 rdf:resource="#TrackpaintingCompleted" />
+        <putDownTerminal_ARM5 rdf:resource="#PutdownCompleted" />
+        <reset_ARM5 rdf:resource="#AtStartPosition" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#PickupCompleted">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>not at start position | ARM5Mode &amp;&amp; picked up | TerminalController</rdfs:label>
+        <reset_ARM5 rdf:resource="#AtStartPosition" />
+        <putDownTerminal_ARM5 rdf:resource="#PutdownCompleted" />
+        <trackPainting_ARM5 rdf:resource="#TrackpaintingCompleted" />
+        <pickUpTerminal_ARM5 rdf:resource="#PickupCompleted" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#TrackpaintingCompleted">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>not at start position | ARM5Mode &amp;&amp; completed | TrackPainting_ARM5</rdfs:label>
+        <reset_ARM5 rdf:resource="#AtStartPosition" />
+        <putDownTerminal_ARM5 rdf:resource="#PutdownCompleted" />
+        <pickUpTerminal_ARM5 rdf:resource="#PickupCompleted" />
+        <trackPainting_ARM5 rdf:resource="#TrackpaintingCompleted" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#PutdownCompleted">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>not at start position | ARM5Mode &amp;&amp; put down | TerminalController</rdfs:label>
+        <reset_ARM5 rdf:resource="#AtStartPosition" />
+        <pickUpTerminal_ARM5 rdf:resource="#PickupCompleted" />
+        <trackPainting_ARM5 rdf:resource="#TrackpaintingCompleted" />
+        <putDownTerminal_ARM5 rdf:resource="#PutdownCompleted" />
+    </owl:NamedIndividual>
+</rdf:RDF>

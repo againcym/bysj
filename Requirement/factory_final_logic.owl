@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/factory#"
+     xml:base="http://www.semanticweb.org/ontologies/factory"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/factory"/>
+
+    <!-- 基础类 -->
+    <owl:Class rdf:about="#Agent"/>
+    <owl:Class rdf:about="#Resource"/>
+    <owl:Class rdf:about="#Process"/>
+    <owl:Class rdf:about="#Product"/>
+
+    <!-- 过程子类 -->
+    <owl:Class rdf:about="#PickupProcess">
+        <rdfs:subClassOf rdf:resource="#Process"/>
+        <rdfs:label xml:lang="zh">出库</rdfs:label>
+        <rdfs:label xml:lang="en">Pickup</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#WeldingProcess">
+        <rdfs:subClassOf rdf:resource="#Process"/>
+        <rdfs:label xml:lang="zh">焊接</rdfs:label>
+        <rdfs:label xml:lang="en">Welding</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#PaintingProcess">
+        <rdfs:subClassOf rdf:resource="#Process"/>
+        <rdfs:label xml:lang="zh">涂装</rdfs:label>
+        <rdfs:label xml:lang="en">Painting</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#InspectionProcess">
+        <rdfs:subClassOf rdf:resource="#Process"/>
+        <rdfs:label xml:lang="zh">检测</rdfs:label>
+        <rdfs:label xml:lang="en">Inspection</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#WarehousingProcess">
+        <rdfs:subClassOf rdf:resource="#Process"/>
+        <rdfs:label xml:lang="zh">入库</rdfs:label>
+        <rdfs:label xml:lang="en">Warehousing</rdfs:label>
+    </owl:Class>
+
+    <!-- 产品子类 -->
+    <owl:Class rdf:about="#RawMaterial">
+        <rdfs:subClassOf rdf:resource="#Product"/>
+        <rdfs:label xml:lang="zh">原料</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#WeldingSemiProduct">
+        <rdfs:subClassOf rdf:resource="#Product"/>
+        <rdfs:label xml:lang="zh">焊接半成品</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#PaintingSemiProduct">
+        <rdfs:subClassOf rdf:resource="#Product"/>
+        <rdfs:label xml:lang="zh">涂装半成品</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#InspectionSemiProduct">
+        <rdfs:subClassOf rdf:resource="#Product"/>
+        <rdfs:label xml:lang="zh">检测半成品</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#FinishedProduct">
+        <rdfs:subClassOf rdf:resource="#Product"/>
+        <rdfs:label xml:lang="zh">最终成品</rdfs:label>
+    </owl:Class>
+
+    <!-- 数据类型属性 -->
+    <owl:DatatypeProperty rdf:about="#hasLocationInfo">
+        <rdfs:domain rdf:resource="#Resource"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Defines the physical coordinate or initial position of a resource.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasStepName">
+        <rdfs:domain rdf:resource="#Process"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Describes the specific operation name within a manufacturing process.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- 对象属性（共六个） -->
+    <owl:ObjectProperty rdf:about="#perceivesResource">
+        <rdfs:domain rdf:resource="#Resource"/>
+        <rdfs:range rdf:resource="#Agent"/>
+        <rdfs:comment>Agent perceives initial positions and startup conditions from Resource information.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#plansProcess">
+        <rdfs:domain rdf:resource="#Agent"/>
+        <rdfs:range rdf:resource="#Process"/>
+        <rdfs:comment>Agent plans specific process steps based on the perceived Resource context.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#resourceEnablesProcess">
+        <rdfs:domain rdf:resource="#Resource"/>
+        <rdfs:range rdf:resource="#Process"/>
+        <rdfs:comment>Hardware resources provide the capabilities required to execute a process.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#processToProduceProduct">
+        <rdfs:domain rdf:resource="#Process"/>
+        <rdfs:range rdf:resource="#Product"/>
+        <rdfs:comment>The execution of a process results in a state change of the product.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#productIsProducedOnResource">
+        <rdfs:domain rdf:resource="#Product"/>
+        <rdfs:range rdf:resource="#Resource"/>
+        <rdfs:comment>The final product is output at a specific resource location.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#productReportsToAgent">
+        <rdfs:domain rdf:resource="#Product"/>
+        <rdfs:range rdf:resource="#Agent"/>
+        <rdfs:comment>Each product reports its completion to the Agent, which then continues the next process.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- 添加一些默认的 process->product 关系，作为推理的基础知识 -->
+    <owl:NamedIndividual rdf:about="#DefaultWeldingProcess">
+        <rdf:type rdf:resource="#WeldingProcess"/>
+        <processToProduceProduct rdf:resource="#WeldingSemiProduct"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#DefaultPaintingProcess">
+        <rdf:type rdf:resource="#PaintingProcess"/>
+        <processToProduceProduct rdf:resource="#PaintingSemiProduct"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#DefaultInspectionProcess">
+        <rdf:type rdf:resource="#InspectionProcess"/>
+        <processToProduceProduct rdf:resource="#InspectionSemiProduct"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#DefaultWarehousingProcess">
+        <rdf:type rdf:resource="#WarehousingProcess"/>
+        <processToProduceProduct rdf:resource="#FinishedProduct"/>
+    </owl:NamedIndividual>
+
+</rdf:RDF>

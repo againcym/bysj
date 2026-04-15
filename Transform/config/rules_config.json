@@ -1,0 +1,18 @@
+{
+    "mover_signals": {
+        "move_cmd": "move_to|Mover",
+        "release_cmd": "release|Mover"
+    },
+    "resource_to_prefix": {
+        "仓库机器臂1": "ARM1",
+        "转移机器臂2": "ARM2",
+        "焊接机器臂3": "ARM3",
+        "焊接机器臂4": "ARM4",
+        "涂装机器臂5": "ARM5",
+        "转移机器臂6": "ARM6",
+        "仓库机器臂7": "ARM7",
+        "传送带1": "ConveyorBelt1",
+        "传送带2": "ConveyorBelt2",
+        "相机": "Camera"
+    }
+}

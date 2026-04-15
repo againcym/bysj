@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>软件定义自动化演示平台</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="control-rail">
+      <div class="rail-header">
+        <div>
+          <h1>软件定义自动化</h1>
+          <div class="rail-subtitle">需求 → PPR → Contract</div>
+        </div>
+        <div id="runtime-status" class="status-pill">Ready</div>
+      </div>
+
+      <div class="rail-scroll">
+        <details class="rail-section" open>
+          <summary class="rail-section-head">
+            <span>示例需求</span>
+          </summary>
+          <div id="examples" class="example-list"></div>
+        </details>
+
+        <details class="rail-section rail-chat-section" open>
+          <summary class="rail-section-head">
+            <span>会话记录</span>
+          </summary>
+          <div id="chat-log" class="chat-log">
+            <div class="chat-msg assistant">
+              <div class="chat-meta">系统</div>
+              <div class="chat-body">输入一条生产需求后，页面会按阶段逐步展示结果。</div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <form id="composer" class="composer-shell">
+        <label class="toggle-row">
+          <input id="use-llm" type="checkbox" checked>
+          <span>允许调用 LLM 辅助（环境可用时）</span>
+        </label>
+        <textarea id="order-input" rows="5" placeholder="例如：我想生产一辆用蓝色写LUCKY字样的红色汽车"></textarea>
+        <div class="composer-actions">
+          <button type="submit" id="run-btn">运行整条链路</button>
+        </div>
+      </form>
+    </aside>
+
+    <main class="main-shell">
+      <section class="surface-card summary-card compact-summary-card">
+        <div id="summary-metrics" class="metric-strip"></div>
+      </section>
+
+      <section class="surface-card">
+        <div class="section-head">
+          <h2>阶段进度</h2>
+        </div>
+        <div id="progress-steps" class="progress-steps"></div>
+        <div id="live-status" class="live-status-list"></div>
+      </section>
+
+      <section class="surface-card">
+        <div class="section-head">
+          <h2>阶段解释与结果</h2>
+        </div>
+        <div id="stage-sections" class="stage-sections empty-state">
+          运行后，阶段结果会依次出现在这里。
+        </div>
+      </section>
+
+      <section class="surface-card">
+        <div class="section-head section-head-wrap">
+          <h2>源文件与最终产物</h2>
+          <div class="download-row">
+            <a class="download-link" href="/api/download/ppr" target="_blank" rel="noopener">下载 PPR</a>
+            <a class="download-link" href="/api/download/contract" target="_blank" rel="noopener">下载 Contract</a>
+            <a class="download-link" href="/api/download/operation_context" target="_blank" rel="noopener">下载 operation_context</a>
+            <button class="download-link" id="open-contract-btn" type="button">打开 Contract 可视化</button>
+          </div>
+        </div>
+        <div class="source-toolbar">
+          <button class="source-btn active" data-source="ppr_xml" type="button">PPR XML</button>
+          <button class="source-btn" data-source="contract_xml" type="button">Contract XML</button>
+          <button class="source-btn" data-source="signal_xml" type="button">Signal XML</button>
+          <button class="source-btn" data-source="operation_context_json" type="button">operation_context.json</button>
+        </div>
+        <pre id="raw-viewer" class="code-viewer">运行完成后可在这里查看源文件。</pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

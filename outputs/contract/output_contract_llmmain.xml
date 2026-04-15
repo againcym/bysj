@@ -1,0 +1,2244 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Data>
+    <Oblib>
+        <Item key="1" text="Instance Group" type="namespace" parent="NaN" />
+        <Item key="12" text="ARM" type="instanceGroup" parent="1" />
+        <Item key="39" text="ConveyorBelt" type="instanceGroup" parent="1" />
+        <Item key="2" text="Mover" type="instanceGroup" parent="1" />
+        <Item key="83" text="Camera" type="instanceGroup" parent="1" />
+        <Item key="99" text="System" type="instanceGroup" parent="1" />
+        <Item key="200" text="ARM1" type="object" parent="12" />
+        <Item key="201" text="ARM1Mode" type="status" parent="200" />
+        <Item key="202" text="ARM1Outbound" type="status" parent="200" />
+        <Item key="203" text="ARM1Inbound" type="status" parent="200" />
+        <Item key="204" text="reset" type="action" parent="200" />
+        <Item key="205" text="outbound" type="action" parent="200" />
+        <Item key="206" text="inbound" type="action" parent="200" />
+        <Item key="306" text="ARM2" type="object" parent="12" />
+        <Item key="307" text="ARM2Mode" type="status" parent="306" />
+        <Item key="308" text="ARM2Moveout" type="status" parent="306" />
+        <Item key="309" text="ARM2Movein" type="status" parent="306" />
+        <Item key="310" text="moveOut" type="action" parent="306" />
+        <Item key="311" text="moveIn" type="action" parent="306" />
+        <Item key="312" text="reset" type="action" parent="306" />
+        <Item key="412" text="ARM3" type="object" parent="12" />
+        <Item key="413" text="ARM3Mode" type="status" parent="412" />
+        <Item key="414" text="TrackWelding" type="status" parent="412" />
+        <Item key="415" text="trackWelding" type="action" parent="412" />
+        <Item key="416" text="reset" type="action" parent="412" />
+        <Item key="516" text="ARM4" type="object" parent="12" />
+        <Item key="517" text="ARM4Mode" type="status" parent="516" />
+        <Item key="518" text="TrackWelding" type="status" parent="516" />
+        <Item key="519" text="trackWelding" type="action" parent="516" />
+        <Item key="520" text="reset" type="action" parent="516" />
+        <Item key="620" text="ARM5" type="object" parent="12" />
+        <Item key="621" text="ARM5Mode" type="status" parent="620" />
+        <Item key="622" text="TrackPainting" type="status" parent="620" />
+        <Item key="623" text="TerminalController" type="status" parent="620" />
+        <Item key="624" text="pickUpTerminal" type="action" parent="620" />
+        <Item key="625" text="trackPainting" type="action" parent="620" />
+        <Item key="626" text="putDownTerminal" type="action" parent="620" />
+        <Item key="627" text="reset" type="action" parent="620" />
+        <Item key="727" text="ARM6" type="object" parent="12" />
+        <Item key="728" text="ARM6Mode" type="status" parent="727" />
+        <Item key="729" text="ARM6Movein" type="status" parent="727" />
+        <Item key="730" text="ARM6Moveout" type="status" parent="727" />
+        <Item key="731" text="moveOut" type="action" parent="727" />
+        <Item key="732" text="moveIn" type="action" parent="727" />
+        <Item key="733" text="reset" type="action" parent="727" />
+        <Item key="833" text="ARM7" type="object" parent="12" />
+        <Item key="834" text="ARM7Mode" type="status" parent="833" />
+        <Item key="835" text="ARM7Inbound" type="status" parent="833" />
+        <Item key="836" text="ARM7Outbound" type="status" parent="833" />
+        <Item key="837" text="reset" type="action" parent="833" />
+        <Item key="838" text="outbound" type="action" parent="833" />
+        <Item key="839" text="inbound" type="action" parent="833" />
+        <Item key="939" text="ConveyorBelt1" type="object" parent="39" />
+        <Item key="940" text="Conveyorbelt1Motor" type="status" parent="939" />
+        <Item key="941" text="CB1Sensor1" type="status" parent="939" />
+        <Item key="942" text="CB1Sensor2" type="status" parent="939" />
+        <Item key="943" text="forward" type="action" parent="939" />
+        <Item key="944" text="backward" type="action" parent="939" />
+        <Item key="945" text="stop" type="action" parent="939" />
+        <Item key="1045" text="ConveyorBelt2" type="object" parent="39" />
+        <Item key="1046" text="Conveyorbelt2Motor" type="status" parent="1045" />
+        <Item key="1047" text="CB2Sensor1" type="status" parent="1045" />
+        <Item key="1048" text="CB2Sensor2" type="status" parent="1045" />
+        <Item key="1049" text="forward" type="action" parent="1045" />
+        <Item key="1050" text="backward" type="action" parent="1045" />
+        <Item key="1051" text="stop" type="action" parent="1045" />
+        <Item key="1151" text="Camera" type="object" parent="83" />
+        <Item key="1152" text="CameraMode" type="status" parent="1151" />
+        <Item key="1153" text="PhotoInspection" type="status" parent="1151" />
+        <Item key="1154" text="photoInspection" type="action" parent="1151" />
+        <Item key="1254" text="Mover" type="object" parent="2" />
+        <Item key="1255" text="MoverPosition" type="status" parent="1254" />
+        <Item key="1256" text="release" type="action" parent="1254" />
+        <Item key="1257" text="moveTo" type="action" parent="1254" />
+        <Item key="1357" text="System" type="object" parent="99" />
+        <Item key="1358" text="RMInformation" type="status" parent="1357" />
+        <Item key="1359" text="WeldingInformation" type="status" parent="1357" />
+        <Item key="1360" text="PaintingInformation" type="status" parent="1357" />
+        <Item key="1361" text="PIInformation" type="status" parent="1357" />
+        <Item key="1362" text="FPWInformation" type="status" parent="1357" />
+    </Oblib>
+    <NodeArray>
+        <Node key="100" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="110" text="RAW_MATERIAL_HANDLING_CHASSIS" textt="RAW_MATERIAL_HANDLING_CHASSIS" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="120" text="null" textt="outbound|ARM1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="130" text="null" textt="reset|ARM1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="140" text="null" textt="forward|conveyor belt1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="150" text="null" textt="stop|conveyor belt1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="160" text="null" textt="move out|ARM2" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="170" text="null" textt="reset|ARM2" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="180" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="190" text="RAW_MATERIAL_HANDLING_BATTERY" textt="RAW_MATERIAL_HANDLING_BATTERY" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="200" text="null" textt="outbound|ARM1" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="210" text="null" textt="reset|ARM1" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="220" text="null" textt="forward|conveyor belt1" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="230" text="null" textt="stop|conveyor belt1" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="240" text="null" textt="move out|ARM2" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="250" text="null" textt="reset|ARM2" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="260" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="270" text="RAW_MATERIAL_HANDLING_BODY" textt="RAW_MATERIAL_HANDLING_BODY" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="280" text="null" textt="outbound|ARM1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="290" text="null" textt="reset|ARM1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="300" text="null" textt="forward|conveyor belt1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="310" text="null" textt="stop|conveyor belt1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="320" text="null" textt="move out|ARM2" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="330" text="null" textt="reset|ARM2" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="340" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="350" text="WELDING" textt="WELDING" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="360" text="null" textt="track welding|ARM3" type="Operation" category="Operation" group="350" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="370" text="null" textt="reset|ARM3" type="Operation" category="Operation" group="350" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="380" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="390" text="PAINTING" textt="PAINTING" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="400" text="null" textt="pick up the terminal|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="410" text="null" textt="track painting|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="420" text="null" textt="put down the terminal|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="430" text="null" textt="pick up the terminal|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="440" text="null" textt="track painting|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="450" text="null" textt="put down the terminal|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="460" text="null" textt="reset|ARM5" type="Operation" category="Operation" group="390" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="470" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="480" text="null" textt="photo inspection|camera" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="490" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="500" text="FINISHED_PRODUCTS_WAREHOUSING" textt="FINISHED_PRODUCTS_WAREHOUSING" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="510" text="null" textt="move in|ARM6" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="520" text="null" textt="reset|ARM6" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="530" text="null" textt="backward|conveyor belt2" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="540" text="null" textt="stop|conveyor belt2" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="550" text="null" textt="inbound|ARM7" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="560" text="null" textt="reset|ARM7" type="Operation" category="Operation" group="500" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="570" text="null" textt="release|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
+    </NodeArray>
+    <LinkArray>
+        <Link from="100" to="110">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Mover is at target position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at target position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Raw material information is received</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Raw material information" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="received" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM1 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>MoverPosition</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Condition" text="MoverPosition" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>RMInformation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Raw material information" />
+                            <token type="Condition" text="RMInformation" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM1Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Condition" text="ARM1Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Condition" text="ARM2 is at start position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="120" to="130">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM1 outbound is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1 outbound" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1 first sensor is triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 first sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM1 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM1Outbound</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1 outbound" />
+                            <token type="Condition" text="ARM1Outbound" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB1Sensor1</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 first sensor" />
+                            <token type="Condition" text="CB1Sensor1" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM1Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Condition" text="ARM1Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="130" to="140">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM1 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM1Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Condition" text="ARM1Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="140" to="150">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is forward rotation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="forward rotation" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1 second sensor is triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB1Sensor2</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Condition" text="CB1Sensor2" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="150" to="160">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM2 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Condition" text="ARM2Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="160" to="170">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM2 move out is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2 move out" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1 second sensor is not triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM2 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM2Moveout</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2 move out" />
+                            <token type="Condition" text="ARM2Moveout" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB1Sensor2</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Condition" text="CB1Sensor2" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Condition" text="ARM2Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="110" to="180">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Raw material hanlding is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Raw material hanlding" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="180" to="190">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Mover is at target position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at target position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Raw material information is received</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Raw material information" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="received" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM1 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>MoverPosition</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Condition" text="MoverPosition" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>RMInformation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Raw material information" />
+                            <token type="Condition" text="RMInformation" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM1Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Condition" text="ARM1Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Condition" text="ARM2Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="200" to="210">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM1 outbound is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1 outbound" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1 first sensor is triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 first sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM1 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM1Outbound</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1 outbound" />
+                            <token type="Condition" text="ARM1Outbound" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB1Sensor1</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 first sensor" />
+                            <token type="Condition" text="CB1Sensor1" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM1Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Condition" text="ARM1Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="210" to="220">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM1 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM1Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Condition" text="ARM1Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="220" to="230">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is forward rotation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="forward rotation" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1 second sensor is triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB1Sensor2</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Condition" text="CB1Sensor2" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="230" to="240">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM2 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Condition" text="ARM2Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="240" to="250">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM2 move out is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2 move out" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1 second sensor is not triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM2 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM2Moveout</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2 move out" />
+                            <token type="Condition" text="ARM2Moveout" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB1Sensor2</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Condition" text="CB1Sensor2" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Condition" text="ARM2Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="190" to="260">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Raw material hanlding is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Raw material hanlding" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="260" to="270">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Mover is at target position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at target position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Raw material information is received</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Raw material information" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="received" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM1 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>MoverPosition</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Condition" text="MoverPosition" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>RMInformation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Raw material information" />
+                            <token type="Condition" text="RMInformation" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM1Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Condition" text="ARM1Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Condition" text="ARM2Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="280" to="290">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM1 outbound is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1 outbound" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1 first sensor is triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 first sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM1 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM1Outbound</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1 outbound" />
+                            <token type="Condition" text="ARM1Outbound" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB1Sensor1</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 first sensor" />
+                            <token type="Condition" text="CB1Sensor1" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM1Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Condition" text="ARM1Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="290" to="300">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM1 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM1Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM1" />
+                            <token type="Condition" text="ARM1Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="300" to="310">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is forward rotation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="forward rotation" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1 second sensor is triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB1Sensor2</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Condition" text="CB1Sensor2" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="310" to="320">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt1 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM2 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt1" />
+                            <token type="Condition" text="Conveyorbelt1Motor" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Condition" text="ARM2Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="320" to="330">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM2 move out is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2 move out" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt1 second sensor is not triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM2 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM2Moveout</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2 move out" />
+                            <token type="Condition" text="ARM2Moveout" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB1Sensor2</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt1 second sensor" />
+                            <token type="Condition" text="CB1Sensor2" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM2Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM2" />
+                            <token type="Condition" text="ARM2Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="270" to="340">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Raw material hanlding is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Raw material hanlding" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="340" to="350">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Mover is at target position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at target position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Welding information is received</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Welding information" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="received" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM3 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM3" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>MoverPosition</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Condition" text="MoverPosition" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>WeldingInformation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Welding information" />
+                            <token type="Condition" text="WeldingInformation" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM3Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM3" />
+                            <token type="Condition" text="ARM3Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="360" to="370">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Track welding is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track welding" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM3 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM3" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TrackWelding</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track welding" />
+                            <token type="Condition" text="TrackWelding" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM3Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM3" />
+                            <token type="Condition" text="ARM3Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="350" to="380">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Welding is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Welding" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="380" to="390">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Mover is at target position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at target position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Painting information is received</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Painting information" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="received" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM5 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM5" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>MoverPosition</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Condition" text="MoverPosition" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>PaintingInformation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Painting information" />
+                            <token type="Condition" text="PaintingInformation" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM5Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM5" />
+                            <token type="Condition" text="ARM5Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="400" to="410">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Terminal is picked up</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="picked up" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TerminalController</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Condition" text="TerminalController" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="410" to="420">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Track painting is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track painting" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TrackPainting</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track painting" />
+                            <token type="Condition" text="TrackPainting" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="420" to="430">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Terminal is put down</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="put down" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>Track painting is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track painting" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM5 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM5" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TerminalController</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Condition" text="TerminalController" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>TrackPainting</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track painting" />
+                            <token type="Condition" text="TrackPainting" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM5Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM5" />
+                            <token type="Condition" text="ARM5Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="430" to="440">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Terminal is picked up</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="picked up" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TerminalController</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Condition" text="TerminalController" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="440" to="450">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Track painting is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track painting" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TrackPainting</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Track painting" />
+                            <token type="Condition" text="TrackPainting" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="450" to="460">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Terminal is put down</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="put down" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM5 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM5" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>TerminalController</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Terminal" />
+                            <token type="Condition" text="TerminalController" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM5Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM5" />
+                            <token type="Condition" text="ARM5Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="390" to="470">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Painting is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Painting" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="470" to="480">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Mover is at target position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at target position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Photo inspection information is received</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Photo inspection information" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="received" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>Camera is ready</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Camera" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="ready" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>MoverPosition</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Condition" text="MoverPosition" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>PIInformation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Photo inspection information" />
+                            <token type="Condition" text="PIInformation" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CameraMode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Camera" />
+                            <token type="Condition" text="CameraMode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="480" to="490">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Photo inspection is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Photo inspection" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>PhotoInspection</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Photo inspection" />
+                            <token type="Condition" text="PhotoInspection" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="490" to="500">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Finished Products Warehousing information is received</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Finished Products Warehousing information" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="received" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Mover is at target position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at target position" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM6 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM6" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM7 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM7" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt2 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>FPWInformation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Finished Products Warehousing information" />
+                            <token type="Condition" text="FPWInformation" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>MoverPosition</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Mover" />
+                            <token type="Condition" text="MoverPosition" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM6Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM6" />
+                            <token type="Condition" text="ARM6Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM7Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM7" />
+                            <token type="Condition" text="ARM7Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt2Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt2" />
+                            <token type="Condition" text="Conveyorbelt2Motor" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="510" to="520">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM6 move in is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM6 move in" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt2 second sensor is triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt2 second sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM6 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM6" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM6Movein</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM6 move in" />
+                            <token type="Condition" text="ARM6Movein" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB2Sensor2</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt2 second sensor" />
+                            <token type="Condition" text="CB2Sensor2" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM6Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM6" />
+                            <token type="Condition" text="ARM6Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="520" to="530">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM6 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM6" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt2 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM6Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM6" />
+                            <token type="Condition" text="ARM6Mode" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt2Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt2" />
+                            <token type="Condition" text="Conveyorbelt2Motor" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="530" to="540">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt2 is backward rotation</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="backward rotation" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt2 first sensor is triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt2 first sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt2Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt2" />
+                            <token type="Condition" text="Conveyorbelt2Motor" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB2Sensor1</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt2 first sensor" />
+                            <token type="Condition" text="CB2Sensor1" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="540" to="550">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ConveyorBelt2 is stopped</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt2" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="stopped" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM7 is at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM7" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt2Motor</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ConveyorBelt2" />
+                            <token type="Condition" text="Conveyorbelt2Motor" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM7Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM7" />
+                            <token type="Condition" text="ARM7Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="550" to="560">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>ARM7 inbound is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM7 inbound" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>Conveyorbelt2 first sensor is not triggered</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt2 first sensor" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not triggered" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc>ARM7 is not at start position</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM7" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="not at start position" />
+                        </tokenGroup>
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc>ARM7Inbound</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM7 inbound" />
+                            <token type="Condition" text="ARM7Inbound" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>CB2Sensor1</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Conveyorbelt2 first sensor" />
+                            <token type="Condition" text="CB2Sensor1" />
+                        </tokenGroup>
+                    </Condition>
+                    <Condition>
+                        <tokenDesc>ARM7Mode</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="ARM7" />
+                            <token type="Condition" text="ARM7Mode" />
+                        </tokenGroup>
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+        <Link from="500" to="570">
+            <Contract>
+                <Guarantee>
+                    <Condition>
+                        <tokenDesc>Finished Products Warehousing is completed</tokenDesc>
+                        <tokenGroup>
+                            <token type="Variable" text="Finished Products Warehousing" />
+                            <token type="Operator" text="is" />
+                            <token type="Value" text="completed" />
+                        </tokenGroup>
+                    </Condition>
+                </Guarantee>
+                <Assumption>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Assumption>
+                <Interface>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Interface>
+                <Invariant>
+                    <Condition>
+                        <tokenDesc />
+                        <tokenGroup />
+                    </Condition>
+                </Invariant>
+            </Contract>
+        </Link>
+    </LinkArray>
+</Data>

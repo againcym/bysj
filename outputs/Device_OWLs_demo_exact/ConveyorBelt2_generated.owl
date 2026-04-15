@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/arm1_sm#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://www.semanticweb.org/ontologies/arm1_sm">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/arm1_sm" />
+    <owl:Class rdf:about="#State" />
+    <owl:ObjectProperty rdf:about="#forward_conveyorBelt2">
+        <rdfs:label>forward (Q0.3)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#backward_conveyorBelt2">
+        <rdfs:label>backward (Q0.4)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#stop_conveyorBelt2">
+        <rdfs:label>stop (Q0.5)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:NamedIndividual rdf:about="#CB2Stopped">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>stopped | Conveyorbelt2Motor</rdfs:label>
+        <forward_conveyorBelt2 rdf:resource="#CB2MovingForward" />
+        <backward_conveyorBelt2 rdf:resource="#CB2MovingBackward" />
+        <stop_conveyorBelt2 rdf:resource="#CB2Stopped" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#CB2MovingForward">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>forward rotation | Conveyorbelt2Motor</rdfs:label>
+        <stop_conveyorBelt2 rdf:resource="#CB2Stopped" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#CB2MovingBackward">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>backward rotation | Conveyorbelt2Motor</rdfs:label>
+        <stop_conveyorBelt2 rdf:resource="#CB2Stopped" />
+    </owl:NamedIndividual>
+</rdf:RDF>

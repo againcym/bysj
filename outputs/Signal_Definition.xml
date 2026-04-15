@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SignalMap>
+    <Device name="ARM1">
+        <Signal Name="ARM1Mode" Type="Input" Address="I0.2">
+            <Select Value="1" Desc="at start position" />
+            <Select Value="0" Desc="not at start position" />
+        </Signal><Signal Name="ARM1Outbound" Type="Input" Address="I3.5">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="ARM1Inbound" Type="Input" Address="I4.1">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="reset_ARM1" Type="Output" Address="Q1.2">
+            <Select Value="1" Desc="reset" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="outbound_ARM1" Type="Output" Address="Q1.3">
+            <Select Value="1" Desc="outbound" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="inbound_ARM1" Type="Output" Address="Q1.4">
+            <Select Value="1" Desc="inbound" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="ARM2">
+        <Signal Name="ARM2Mode" Type="Input" Address="I0.3">
+            <Select Value="1" Desc="at start position" />
+            <Select Value="0" Desc="not at start position" />
+        </Signal><Signal Name="ARM2Moveout" Type="Input" Address="I3.6">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="ARM2Movein" Type="Input" Address="I4.2">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="moveOut_ARM2" Type="Output" Address="Q1.5">
+            <Select Value="1" Desc="move out" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="moveIn_ARM2" Type="Output" Address="Q1.6">
+            <Select Value="1" Desc="move in" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="reset_ARM2" Type="Output" Address="Q1.7">
+            <Select Value="1" Desc="reset" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="ARM3">
+        <Signal Name="ARM3Mode" Type="Input" Address="I0.4">
+            <Select Value="1" Desc="at start position" />
+            <Select Value="0" Desc="not at start position" />
+        </Signal><Signal Name="TrackWelding_ARM3" Type="Input" Address="I3.2">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="trackWelding_ARM3" Type="Output" Address="Q2.0">
+            <Select Value="1" Desc="track welding" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="reset_ARM3" Type="Output" Address="Q2.1">
+            <Select Value="1" Desc="reset" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="ARM4">
+        <Signal Name="ARM4Mode" Type="Input" Address="I0.5">
+            <Select Value="1" Desc="at start position" />
+            <Select Value="0" Desc="not at start position" />
+        </Signal><Signal Name="TrackWelding_ARM4" Type="Input" Address="I4.5">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="trackWelding_ARM4" Type="Output" Address="Q2.2">
+            <Select Value="1" Desc="track welding" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="reset_ARM4" Type="Output" Address="Q2.3">
+            <Select Value="1" Desc="reset" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="ARM5">
+        <Signal Name="ARM5Mode" Type="Input" Address="I0.6">
+            <Select Value="1" Desc="at start position" />
+            <Select Value="0" Desc="not at start position" />
+        </Signal><Signal Name="TrackPainting_ARM5" Type="Input" Address="I3.3">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="TerminalController" Type="Input" Address="I3.4">
+            <Select Value="1" Desc="picked up" />
+            <Select Value="0" Desc="put down" />
+        </Signal><Signal Name="pickUpTerminal_ARM5" Type="Output" Address="Q2.4">
+            <Select Value="1" Desc="pick up the terminal" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="trackPainting_ARM5" Type="Output" Address="Q2.5">
+            <Select Value="1" Desc="track painting" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="putDownTerminal_ARM5" Type="Output" Address="Q2.6">
+            <Select Value="1" Desc="put down the terminal" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="reset_ARM5" Type="Output" Address="Q2.7">
+            <Select Value="1" Desc="reset" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="ARM6">
+        <Signal Name="ARM6Mode" Type="Input" Address="I0.7">
+            <Select Value="1" Desc="at start position" />
+            <Select Value="0" Desc="not at start position" />
+        </Signal><Signal Name="ARM6Movein" Type="Input" Address="I3.7">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="ARM6Moveout" Type="Input" Address="I4.3">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="moveOut_ARM6" Type="Output" Address="Q3.0">
+            <Select Value="1" Desc="move out" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="moveIn_ARM6" Type="Output" Address="Q3.1">
+            <Select Value="1" Desc="move in" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="reset_ARM6" Type="Output" Address="Q3.2">
+            <Select Value="1" Desc="reset" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="ARM7">
+        <Signal Name="ARM7Mode" Type="Input" Address="I1.0">
+            <Select Value="1" Desc="at start position" />
+            <Select Value="0" Desc="not at start position" />
+        </Signal><Signal Name="ARM7Inbound" Type="Input" Address="I4.0">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="ARM7Outbound" Type="Input" Address="I4.4">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="reset_ARM7" Type="Output" Address="Q3.7">
+            <Select Value="1" Desc="reset" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="outbound_ARM7" Type="Output" Address="Q4.0">
+            <Select Value="1" Desc="outbound" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="inbound_ARM7" Type="Output" Address="Q4.1">
+            <Select Value="1" Desc="inbound" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="ConveyorBelt1">
+        <Signal Name="Conveyorbelt1Motor" Type="Input" Address="I1.1" IsVirtual="true">
+            <Pin Address="I1.3" Desc="Backward" />
+            <Pin Address="I1.2" Desc="Forward" />
+            <Select Value="1" Desc="stopped" Condition="Forward=0 AND Backward=0" />
+            <Select Value="2" Desc="forward rotation" Condition="Forward=1 AND Backward=0" />
+            <Select Value="3" Desc="backward rotation" Condition="Forward=0 AND Backward=1" />
+        </Signal><Signal Name="CB1Sensor1" Type="Input" Address="I2.6">
+            <Select Value="1" Desc="triggered" />
+            <Select Value="0" Desc="not triggered" />
+        </Signal><Signal Name="CB1Sensor2" Type="Input" Address="I2.7">
+            <Select Value="1" Desc="triggered" />
+            <Select Value="0" Desc="not triggered" />
+        </Signal><Signal Name="forward_conveyorBelt1" Type="Output" Address="Q0.0">
+            <Select Value="1" Desc="forward" />
+            <Select Value="0" Desc="stop" />
+        </Signal><Signal Name="backward_conveyorBelt1" Type="Output" Address="Q0.1">
+            <Select Value="1" Desc="backward" />
+            <Select Value="0" Desc="stop" />
+        </Signal><Signal Name="stop_conveyorBelt1" Type="Output" Address="Q0.2">
+            <Select Value="1" Desc="stop" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="ConveyorBelt2">
+        <Signal Name="Conveyorbelt2Motor" Type="Input" Address="I1.4" IsVirtual="true">
+            <Pin Address="I1.6" Desc="Backward" />
+            <Pin Address="I1.5" Desc="Forward" />
+            <Select Value="1" Desc="stopped" Condition="Forward=0 AND Backward=0" />
+            <Select Value="2" Desc="forward rotation" Condition="Forward=1 AND Backward=0" />
+            <Select Value="3" Desc="backward rotation" Condition="Forward=0 AND Backward=1" />
+        </Signal><Signal Name="CB2Sensor1" Type="Input" Address="I3.0">
+            <Select Value="1" Desc="triggered" />
+            <Select Value="0" Desc="not triggered" />
+        </Signal><Signal Name="CB2Sensor2" Type="Input" Address="I3.1">
+            <Select Value="1" Desc="triggered" />
+            <Select Value="0" Desc="not triggered" />
+        </Signal><Signal Name="forward_conveyorBelt2" Type="Output" Address="Q0.3">
+            <Select Value="1" Desc="forward" />
+            <Select Value="0" Desc="stop" />
+        </Signal><Signal Name="backward_conveyorBelt2" Type="Output" Address="Q0.4">
+            <Select Value="1" Desc="backward" />
+            <Select Value="0" Desc="stop" />
+        </Signal><Signal Name="stop_conveyorBelt2" Type="Output" Address="Q0.5">
+            <Select Value="1" Desc="stop" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="Camera">
+        <Signal Name="CameraMode" Type="Input" Address="I2.4">
+            <Select Value="1" Desc="ready" />
+            <Select Value="0" Desc="not ready" />
+        </Signal><Signal Name="PhotoInspection" Type="Input" Address="I2.5">
+            <Select Value="1" Desc="completed" />
+            <Select Value="0" Desc="not completed" />
+        </Signal><Signal Name="photoInspection_Camera" Type="Output" Address="Q4.4">
+            <Select Value="1" Desc="photo inspection" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="Mover">
+        <Signal Name="MoverPosition" Type="Input" Address="I0.0">
+            <Select Value="1" Desc="at target position" />
+            <Select Value="0" Desc="not at target position" />
+        </Signal><Signal Name="release_Mover" Type="Output" Address="Q4.2">
+            <Select Value="1" Desc="release" />
+            <Select Value="0" Desc="idle" />
+        </Signal><Signal Name="moveTo_Mover" Type="Output" Address="Q4.3">
+            <Select Value="1" Desc="move_to" />
+            <Select Value="0" Desc="idle" />
+        </Signal>
+    </Device><Device name="System">
+        <Signal Name="RMInformation" Type="Input" Address="I0.1">
+            <Select Value="1" Desc="received" />
+            <Select Value="0" Desc="not received" />
+        </Signal><Signal Name="WeldingInformation" Type="Input" Address="I2.0">
+            <Select Value="1" Desc="received" />
+            <Select Value="0" Desc="not received" />
+        </Signal><Signal Name="PaintingInformation" Type="Input" Address="I2.1">
+            <Select Value="1" Desc="received" />
+            <Select Value="0" Desc="not received" />
+        </Signal><Signal Name="PIInformation" Type="Input" Address="I2.2">
+            <Select Value="1" Desc="received" />
+            <Select Value="0" Desc="not received" />
+        </Signal><Signal Name="FPWInformation" Type="Input" Address="I2.3">
+            <Select Value="1" Desc="received" />
+            <Select Value="0" Desc="not received" />
+        </Signal>
+    </Device>
+</SignalMap>

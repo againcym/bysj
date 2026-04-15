@@ -1,0 +1,1360 @@
+{
+  "schema_version": "1.0",
+  "generator": "ppr_to_contract_converter_llm_primary.py",
+  "ppr_source": "C:\\Users\\11769\\Desktop\\毕设\\project\\outputs\\PPR_Final_logic.xml",
+  "contract_output": "C:\\Users\\11769\\Desktop\\毕设\\project\\outputs\\contract\\output_contract_llmmain.xml",
+  "process_context": {
+    "RAW_MATERIAL_HANDLING_CHASSIS": {
+      "process_id": "RAW_MATERIAL_HANDLING_CHASSIS",
+      "hardware_resource": [
+        "仓库机器臂1",
+        "转移机器臂2",
+        "传送带1"
+      ],
+      "material_resource": {
+        "material_name": "car_chassis",
+        "raw": "car_chassis @ (WS_01, 3, 1)",
+        "source_location": {
+          "warehouse": "WS_01",
+          "level": 3,
+          "slot": 1
+        }
+      },
+      "product": {
+        "product_class": "原料",
+        "product_specific": "car_chassis"
+      },
+      "from_condition": "动子就位, 收到拿取原料信息",
+      "to_condition": "原料拿取完成"
+    },
+    "RAW_MATERIAL_HANDLING_BATTERY": {
+      "process_id": "RAW_MATERIAL_HANDLING_BATTERY",
+      "hardware_resource": [
+        "仓库机器臂1",
+        "转移机器臂2",
+        "传送带1"
+      ],
+      "material_resource": {
+        "material_name": "car_battery",
+        "raw": "car_battery @ (WS_02, 1, 5)",
+        "source_location": {
+          "warehouse": "WS_02",
+          "level": 1,
+          "slot": 5
+        }
+      },
+      "product": {
+        "product_class": "原料",
+        "product_specific": "car_chassis,car_battery"
+      },
+      "from_condition": "动子就位, 收到拿取原料信息",
+      "to_condition": "原料拿取完成"
+    },
+    "RAW_MATERIAL_HANDLING_BODY": {
+      "process_id": "RAW_MATERIAL_HANDLING_BODY",
+      "hardware_resource": [
+        "仓库机器臂1",
+        "转移机器臂2",
+        "传送带1"
+      ],
+      "material_resource": {
+        "material_name": "car_body",
+        "raw": "car_body @ (WS_01, 2, 1)",
+        "source_location": {
+          "warehouse": "WS_01",
+          "level": 2,
+          "slot": 1
+        }
+      },
+      "product": {
+        "product_class": "原料",
+        "product_specific": "car_chassis,car_battery,car_body"
+      },
+      "from_condition": "动子就位, 收到拿取原料信息",
+      "to_condition": "原料拿取完成"
+    },
+    "WELDING": {
+      "process_id": "WELDING",
+      "hardware_resource": [
+        "焊接机器臂3"
+      ],
+      "material_resource": {
+        "material_name": "原料",
+        "raw": "原料"
+      },
+      "product": {
+        "product_class": "焊接半成品",
+        "product_specific": "组件完成轨道焊接"
+      },
+      "from_condition": "动子就位, 收到焊接信息",
+      "to_condition": "焊接完成"
+    },
+    "PAINTING": {
+      "process_id": "PAINTING",
+      "hardware_resource": [
+        "涂装机器臂5"
+      ],
+      "material_resource": {
+        "material_name": "焊接半成品",
+        "raw": "焊接半成品"
+      },
+      "product": {
+        "product_class": "涂装半成品",
+        "product_specific": "已完成涂装"
+      },
+      "from_condition": "动子就位, 收到涂装信息",
+      "to_condition": "喷涂完成"
+    },
+    "PHOTO_INSPECTION": {
+      "process_id": "PHOTO_INSPECTION",
+      "hardware_resource": [
+        "相机"
+      ],
+      "material_resource": {
+        "material_name": "涂装半成品",
+        "raw": "涂装半成品"
+      },
+      "product": {
+        "product_class": "检测半成品",
+        "product_specific": "已完成拍照检测"
+      },
+      "from_condition": "动子就位, 收到拍照检测信息",
+      "to_condition": "拍照检测完成"
+    },
+    "FINISHED_PRODUCTS_WAREHOUSING": {
+      "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
+      "hardware_resource": [
+        "转移机器臂6",
+        "仓库机器臂7",
+        "传送带2"
+      ],
+      "material_resource": {
+        "material_name": "检测半成品",
+        "raw": "检测半成品"
+      },
+      "product": {
+        "product_class": "最终成品",
+        "product_specific": "已入库成品"
+      },
+      "from_condition": "动子就位, 收到成品入库信息",
+      "to_condition": "成品入库完成"
+    }
+  },
+  "operation_context": {
+    "RAW_MATERIAL_HANDLING_CHASSIS__1": {
+      "context_id": "RAW_MATERIAL_HANDLING_CHASSIS__1",
+      "operation_node_key": "120",
+      "process_id": "RAW_MATERIAL_HANDLING_CHASSIS",
+      "step_id": "1",
+      "step_name": "原料出库",
+      "step_desc": "仓库机器臂1将原料(WS_01, 3, 1)出库至传送带1上",
+      "device_name": "ARM1",
+      "action_signal": "outbound_ARM1",
+      "display_text": "outbound|ARM1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_chassis",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 3,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_chassis",
+        "source_warehouse": "WS_01",
+        "source_level": 3,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_CHASSIS__2": {
+      "context_id": "RAW_MATERIAL_HANDLING_CHASSIS__2",
+      "operation_node_key": "130",
+      "process_id": "RAW_MATERIAL_HANDLING_CHASSIS",
+      "step_id": "2",
+      "step_name": "返回初始",
+      "step_desc": "仓库机器臂1回到初始位置",
+      "device_name": "ARM1",
+      "action_signal": "reset_ARM1",
+      "display_text": "reset|ARM1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_chassis",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 3,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_chassis",
+        "source_warehouse": "WS_01",
+        "source_level": 3,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_CHASSIS__3": {
+      "context_id": "RAW_MATERIAL_HANDLING_CHASSIS__3",
+      "operation_node_key": "140",
+      "process_id": "RAW_MATERIAL_HANDLING_CHASSIS",
+      "step_id": "3",
+      "step_name": "传送带启动",
+      "step_desc": "传送带1正转启动",
+      "device_name": "ConveyorBelt1",
+      "action_signal": "forward_conveyorBelt1",
+      "display_text": "forward|conveyor belt1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_chassis",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 3,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_chassis",
+        "source_warehouse": "WS_01",
+        "source_level": 3,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_CHASSIS__4": {
+      "context_id": "RAW_MATERIAL_HANDLING_CHASSIS__4",
+      "operation_node_key": "150",
+      "process_id": "RAW_MATERIAL_HANDLING_CHASSIS",
+      "step_id": "4",
+      "step_name": "检测停止",
+      "step_desc": "原料在传送带1末端被检测到时，传送带1停止",
+      "device_name": "ConveyorBelt1",
+      "action_signal": "stop_conveyorBelt1",
+      "display_text": "stop|conveyor belt1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_chassis",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 3,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_chassis",
+        "source_warehouse": "WS_01",
+        "source_level": 3,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_CHASSIS__5": {
+      "context_id": "RAW_MATERIAL_HANDLING_CHASSIS__5",
+      "operation_node_key": "160",
+      "process_id": "RAW_MATERIAL_HANDLING_CHASSIS",
+      "step_id": "5",
+      "step_name": "转移原料",
+      "step_desc": "转移机器臂2将传送带1上的原料转移至动子上",
+      "device_name": "ARM2",
+      "action_signal": "moveOut_ARM2",
+      "display_text": "move out|ARM2",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_chassis",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 3,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_chassis",
+        "source_warehouse": "WS_01",
+        "source_level": 3,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_CHASSIS__6": {
+      "context_id": "RAW_MATERIAL_HANDLING_CHASSIS__6",
+      "operation_node_key": "170",
+      "process_id": "RAW_MATERIAL_HANDLING_CHASSIS",
+      "step_id": "6",
+      "step_name": "返回初始",
+      "step_desc": "转移机器臂2回到初始位置",
+      "device_name": "ARM2",
+      "action_signal": "reset_ARM2",
+      "display_text": "reset|ARM2",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_chassis",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 3,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_chassis",
+        "source_warehouse": "WS_01",
+        "source_level": 3,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BATTERY__1": {
+      "context_id": "RAW_MATERIAL_HANDLING_BATTERY__1",
+      "operation_node_key": "200",
+      "process_id": "RAW_MATERIAL_HANDLING_BATTERY",
+      "step_id": "1",
+      "step_name": "原料出库",
+      "step_desc": "仓库机器臂1将原料(WS_02, 1, 5)出库至传送带1上",
+      "device_name": "ARM1",
+      "action_signal": "outbound_ARM1",
+      "display_text": "outbound|ARM1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_battery",
+          "source_location": {
+            "warehouse": "WS_02",
+            "level": 1,
+            "slot": 5
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_battery",
+        "source_warehouse": "WS_02",
+        "source_level": 1,
+        "source_slot": 5
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BATTERY__2": {
+      "context_id": "RAW_MATERIAL_HANDLING_BATTERY__2",
+      "operation_node_key": "210",
+      "process_id": "RAW_MATERIAL_HANDLING_BATTERY",
+      "step_id": "2",
+      "step_name": "返回初始",
+      "step_desc": "仓库机器臂1回到初始位置",
+      "device_name": "ARM1",
+      "action_signal": "reset_ARM1",
+      "display_text": "reset|ARM1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_battery",
+          "source_location": {
+            "warehouse": "WS_02",
+            "level": 1,
+            "slot": 5
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_battery",
+        "source_warehouse": "WS_02",
+        "source_level": 1,
+        "source_slot": 5
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BATTERY__3": {
+      "context_id": "RAW_MATERIAL_HANDLING_BATTERY__3",
+      "operation_node_key": "220",
+      "process_id": "RAW_MATERIAL_HANDLING_BATTERY",
+      "step_id": "3",
+      "step_name": "传送带启动",
+      "step_desc": "传送带1正转启动",
+      "device_name": "ConveyorBelt1",
+      "action_signal": "forward_conveyorBelt1",
+      "display_text": "forward|conveyor belt1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_battery",
+          "source_location": {
+            "warehouse": "WS_02",
+            "level": 1,
+            "slot": 5
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_battery",
+        "source_warehouse": "WS_02",
+        "source_level": 1,
+        "source_slot": 5
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BATTERY__4": {
+      "context_id": "RAW_MATERIAL_HANDLING_BATTERY__4",
+      "operation_node_key": "230",
+      "process_id": "RAW_MATERIAL_HANDLING_BATTERY",
+      "step_id": "4",
+      "step_name": "检测停止",
+      "step_desc": "原料在传送带1末端被检测到时，传送带1停止",
+      "device_name": "ConveyorBelt1",
+      "action_signal": "stop_conveyorBelt1",
+      "display_text": "stop|conveyor belt1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_battery",
+          "source_location": {
+            "warehouse": "WS_02",
+            "level": 1,
+            "slot": 5
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_battery",
+        "source_warehouse": "WS_02",
+        "source_level": 1,
+        "source_slot": 5
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BATTERY__5": {
+      "context_id": "RAW_MATERIAL_HANDLING_BATTERY__5",
+      "operation_node_key": "240",
+      "process_id": "RAW_MATERIAL_HANDLING_BATTERY",
+      "step_id": "5",
+      "step_name": "转移原料",
+      "step_desc": "转移机器臂2将传送带1上的原料转移至动子上",
+      "device_name": "ARM2",
+      "action_signal": "moveOut_ARM2",
+      "display_text": "move out|ARM2",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_battery",
+          "source_location": {
+            "warehouse": "WS_02",
+            "level": 1,
+            "slot": 5
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_battery",
+        "source_warehouse": "WS_02",
+        "source_level": 1,
+        "source_slot": 5
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BATTERY__6": {
+      "context_id": "RAW_MATERIAL_HANDLING_BATTERY__6",
+      "operation_node_key": "250",
+      "process_id": "RAW_MATERIAL_HANDLING_BATTERY",
+      "step_id": "6",
+      "step_name": "返回初始",
+      "step_desc": "转移机器臂2回到初始位置",
+      "device_name": "ARM2",
+      "action_signal": "reset_ARM2",
+      "display_text": "reset|ARM2",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_battery",
+          "source_location": {
+            "warehouse": "WS_02",
+            "level": 1,
+            "slot": 5
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_battery",
+        "source_warehouse": "WS_02",
+        "source_level": 1,
+        "source_slot": 5
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BODY__1": {
+      "context_id": "RAW_MATERIAL_HANDLING_BODY__1",
+      "operation_node_key": "280",
+      "process_id": "RAW_MATERIAL_HANDLING_BODY",
+      "step_id": "1",
+      "step_name": "原料出库",
+      "step_desc": "仓库机器臂1将原料(WS_01, 2, 1)出库至传送带1上",
+      "device_name": "ARM1",
+      "action_signal": "outbound_ARM1",
+      "display_text": "outbound|ARM1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery,car_body"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_body",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 2,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_body",
+        "source_warehouse": "WS_01",
+        "source_level": 2,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BODY__2": {
+      "context_id": "RAW_MATERIAL_HANDLING_BODY__2",
+      "operation_node_key": "290",
+      "process_id": "RAW_MATERIAL_HANDLING_BODY",
+      "step_id": "2",
+      "step_name": "返回初始",
+      "step_desc": "仓库机器臂1回到初始位置",
+      "device_name": "ARM1",
+      "action_signal": "reset_ARM1",
+      "display_text": "reset|ARM1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery,car_body"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_body",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 2,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_body",
+        "source_warehouse": "WS_01",
+        "source_level": 2,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BODY__3": {
+      "context_id": "RAW_MATERIAL_HANDLING_BODY__3",
+      "operation_node_key": "300",
+      "process_id": "RAW_MATERIAL_HANDLING_BODY",
+      "step_id": "3",
+      "step_name": "传送带启动",
+      "step_desc": "传送带1正转启动",
+      "device_name": "ConveyorBelt1",
+      "action_signal": "forward_conveyorBelt1",
+      "display_text": "forward|conveyor belt1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery,car_body"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_body",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 2,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_body",
+        "source_warehouse": "WS_01",
+        "source_level": 2,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BODY__4": {
+      "context_id": "RAW_MATERIAL_HANDLING_BODY__4",
+      "operation_node_key": "310",
+      "process_id": "RAW_MATERIAL_HANDLING_BODY",
+      "step_id": "4",
+      "step_name": "传送带停止",
+      "step_desc": "原料在传送带1末端被检测到时，传送带1停止",
+      "device_name": "ConveyorBelt1",
+      "action_signal": "stop_conveyorBelt1",
+      "display_text": "stop|conveyor belt1",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery,car_body"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_body",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 2,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_body",
+        "source_warehouse": "WS_01",
+        "source_level": 2,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BODY__5": {
+      "context_id": "RAW_MATERIAL_HANDLING_BODY__5",
+      "operation_node_key": "320",
+      "process_id": "RAW_MATERIAL_HANDLING_BODY",
+      "step_id": "5",
+      "step_name": "转移原料",
+      "step_desc": "转移机器臂2将传送带1上的原料转移至动子上",
+      "device_name": "ARM2",
+      "action_signal": "moveOut_ARM2",
+      "display_text": "move out|ARM2",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery,car_body"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_body",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 2,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_body",
+        "source_warehouse": "WS_01",
+        "source_level": 2,
+        "source_slot": 1
+      }
+    },
+    "RAW_MATERIAL_HANDLING_BODY__6": {
+      "context_id": "RAW_MATERIAL_HANDLING_BODY__6",
+      "operation_node_key": "330",
+      "process_id": "RAW_MATERIAL_HANDLING_BODY",
+      "step_id": "6",
+      "step_name": "返回初始",
+      "step_desc": "转移机器臂2回到初始位置",
+      "device_name": "ARM2",
+      "action_signal": "reset_ARM2",
+      "display_text": "reset|ARM2",
+      "process_context": {
+        "hardware_resource": [
+          "仓库机器臂1",
+          "转移机器臂2",
+          "传送带1"
+        ],
+        "product": {
+          "product_class": "原料",
+          "product_specific": "car_chassis,car_battery,car_body"
+        },
+        "from_condition": "动子就位, 收到拿取原料信息",
+        "to_condition": "原料拿取完成"
+      },
+      "payload": {
+        "material": {
+          "material_name": "car_body",
+          "source_location": {
+            "warehouse": "WS_01",
+            "level": 2,
+            "slot": 1
+          }
+        }
+      },
+      "register_payload": {
+        "material_name": "car_body",
+        "source_warehouse": "WS_01",
+        "source_level": 2,
+        "source_slot": 1
+      }
+    },
+    "WELDING__1": {
+      "context_id": "WELDING__1",
+      "operation_node_key": "360",
+      "process_id": "WELDING",
+      "step_id": "1",
+      "step_name": "轨道焊接",
+      "step_desc": "焊接机器臂3根据焊接位置信息对组件进行轨道焊接",
+      "device_name": "ARM3",
+      "action_signal": "trackWelding_ARM3",
+      "display_text": "track welding|ARM3",
+      "process_context": {
+        "hardware_resource": [
+          "焊接机器臂3"
+        ],
+        "product": {
+          "product_class": "焊接半成品",
+          "product_specific": "组件完成轨道焊接"
+        },
+        "from_condition": "动子就位, 收到焊接信息",
+        "to_condition": "焊接完成"
+      },
+      "payload": {
+        "welding_recipe": {
+          "raw_instruction": "焊接机器臂3根据焊接位置信息对组件进行轨道焊接",
+          "mode": "track_welding"
+        }
+      },
+      "register_payload": {
+        "welding_mode": "track_welding"
+      }
+    },
+    "WELDING__2": {
+      "context_id": "WELDING__2",
+      "operation_node_key": "370",
+      "process_id": "WELDING",
+      "step_id": "2",
+      "step_name": "返回初始",
+      "step_desc": "焊接机器臂3回到初始位置",
+      "device_name": "ARM3",
+      "action_signal": "reset_ARM3",
+      "display_text": "reset|ARM3",
+      "process_context": {
+        "hardware_resource": [
+          "焊接机器臂3"
+        ],
+        "product": {
+          "product_class": "焊接半成品",
+          "product_specific": "组件完成轨道焊接"
+        },
+        "from_condition": "动子就位, 收到焊接信息",
+        "to_condition": "焊接完成"
+      }
+    },
+    "PAINTING__1": {
+      "context_id": "PAINTING__1",
+      "operation_node_key": "400",
+      "process_id": "PAINTING",
+      "step_id": "1",
+      "step_name": "更换工具",
+      "step_desc": "涂装机器臂5更换末端工具2",
+      "device_name": "ARM5",
+      "action_signal": "pickUpTerminal_ARM5",
+      "display_text": "pick up the terminal|ARM5",
+      "process_context": {
+        "hardware_resource": [
+          "涂装机器臂5"
+        ],
+        "product": {
+          "product_class": "涂装半成品",
+          "product_specific": "已完成涂装"
+        },
+        "from_condition": "动子就位, 收到涂装信息",
+        "to_condition": "喷涂完成"
+      },
+      "payload": {
+        "terminal": {
+          "slot": 2
+        }
+      },
+      "register_payload": {
+        "terminal_slot": 2
+      }
+    },
+    "PAINTING__2": {
+      "context_id": "PAINTING__2",
+      "operation_node_key": "410",
+      "process_id": "PAINTING",
+      "step_id": "2",
+      "step_name": "执行涂装",
+      "step_desc": "涂装机器臂5根据红色整机喷涂信息进行涂装",
+      "device_name": "ARM5",
+      "action_signal": "trackPainting_ARM5",
+      "display_text": "track painting|ARM5",
+      "process_context": {
+        "hardware_resource": [
+          "涂装机器臂5"
+        ],
+        "product": {
+          "product_class": "涂装半成品",
+          "product_specific": "已完成涂装"
+        },
+        "from_condition": "动子就位, 收到涂装信息",
+        "to_condition": "喷涂完成"
+      },
+      "payload": {
+        "painting_recipe": {
+          "raw_instruction": "红色整机喷涂",
+          "mode": "spray",
+          "tool_type": "Wide_Spray_Nozzle",
+          "color_cn": "红色",
+          "color": "red",
+          "scope": "whole_body",
+          "linked_terminal_slot": 2
+        }
+      },
+      "register_payload": {
+        "paint_mode": "spray",
+        "paint_color": "red",
+        "paint_color_cn": "红色",
+        "paint_scope": "whole_body",
+        "terminal_slot": 2,
+        "terminal_tool_type": "Wide_Spray_Nozzle"
+      }
+    },
+    "PAINTING__3": {
+      "context_id": "PAINTING__3",
+      "operation_node_key": "420",
+      "process_id": "PAINTING",
+      "step_id": "3",
+      "step_name": "放回工具",
+      "step_desc": "涂装机器臂5放回末端工具2",
+      "device_name": "ARM5",
+      "action_signal": "putDownTerminal_ARM5",
+      "display_text": "put down the terminal|ARM5",
+      "process_context": {
+        "hardware_resource": [
+          "涂装机器臂5"
+        ],
+        "product": {
+          "product_class": "涂装半成品",
+          "product_specific": "已完成涂装"
+        },
+        "from_condition": "动子就位, 收到涂装信息",
+        "to_condition": "喷涂完成"
+      },
+      "payload": {
+        "terminal": {
+          "slot": 2,
+          "tool_type": "Wide_Spray_Nozzle"
+        }
+      },
+      "register_payload": {
+        "terminal_slot": 2,
+        "terminal_tool_type": "Wide_Spray_Nozzle"
+      }
+    },
+    "PAINTING__4": {
+      "context_id": "PAINTING__4",
+      "operation_node_key": "430",
+      "process_id": "PAINTING",
+      "step_id": "4",
+      "step_name": "更换工具",
+      "step_desc": "涂装机器臂5更换末端工具5",
+      "device_name": "ARM5",
+      "action_signal": "pickUpTerminal_ARM5",
+      "display_text": "pick up the terminal|ARM5",
+      "process_context": {
+        "hardware_resource": [
+          "涂装机器臂5"
+        ],
+        "product": {
+          "product_class": "涂装半成品",
+          "product_specific": "已完成涂装"
+        },
+        "from_condition": "动子就位, 收到涂装信息",
+        "to_condition": "喷涂完成"
+      },
+      "payload": {
+        "terminal": {
+          "slot": 5
+        }
+      },
+      "register_payload": {
+        "terminal_slot": 5
+      }
+    },
+    "PAINTING__5": {
+      "context_id": "PAINTING__5",
+      "operation_node_key": "440",
+      "process_id": "PAINTING",
+      "step_id": "5",
+      "step_name": "执行涂装",
+      "step_desc": "涂装机器臂5根据蓝色写LUCKY字样信息进行涂装",
+      "device_name": "ARM5",
+      "action_signal": "trackPainting_ARM5",
+      "display_text": "track painting|ARM5",
+      "process_context": {
+        "hardware_resource": [
+          "涂装机器臂5"
+        ],
+        "product": {
+          "product_class": "涂装半成品",
+          "product_specific": "已完成涂装"
+        },
+        "from_condition": "动子就位, 收到涂装信息",
+        "to_condition": "喷涂完成"
+      },
+      "payload": {
+        "painting_recipe": {
+          "raw_instruction": "蓝色写LUCKY字样",
+          "mode": "writing",
+          "tool_type": "Fine_Point_Pen",
+          "color_cn": "蓝色",
+          "color": "blue",
+          "text": "LUCKY",
+          "linked_terminal_slot": 5
+        }
+      },
+      "register_payload": {
+        "paint_mode": "writing",
+        "paint_color": "blue",
+        "paint_color_cn": "蓝色",
+        "paint_text": "LUCKY",
+        "terminal_slot": 5,
+        "terminal_tool_type": "Fine_Point_Pen"
+      }
+    },
+    "PAINTING__6": {
+      "context_id": "PAINTING__6",
+      "operation_node_key": "450",
+      "process_id": "PAINTING",
+      "step_id": "6",
+      "step_name": "放回工具",
+      "step_desc": "涂装机器臂5放回末端工具5",
+      "device_name": "ARM5",
+      "action_signal": "putDownTerminal_ARM5",
+      "display_text": "put down the terminal|ARM5",
+      "process_context": {
+        "hardware_resource": [
+          "涂装机器臂5"
+        ],
+        "product": {
+          "product_class": "涂装半成品",
+          "product_specific": "已完成涂装"
+        },
+        "from_condition": "动子就位, 收到涂装信息",
+        "to_condition": "喷涂完成"
+      },
+      "payload": {
+        "terminal": {
+          "slot": 5,
+          "tool_type": "Fine_Point_Pen"
+        }
+      },
+      "register_payload": {
+        "terminal_slot": 5,
+        "terminal_tool_type": "Fine_Point_Pen"
+      }
+    },
+    "PAINTING__7": {
+      "context_id": "PAINTING__7",
+      "operation_node_key": "460",
+      "process_id": "PAINTING",
+      "step_id": "7",
+      "step_name": "返回初始位",
+      "step_desc": "涂装机器臂5回到初始位置",
+      "device_name": "ARM5",
+      "action_signal": "reset_ARM5",
+      "display_text": "reset|ARM5",
+      "process_context": {
+        "hardware_resource": [
+          "涂装机器臂5"
+        ],
+        "product": {
+          "product_class": "涂装半成品",
+          "product_specific": "已完成涂装"
+        },
+        "from_condition": "动子就位, 收到涂装信息",
+        "to_condition": "喷涂完成"
+      }
+    },
+    "PHOTO_INSPECTION__1": {
+      "context_id": "PHOTO_INSPECTION__1",
+      "operation_node_key": "480",
+      "process_id": "PHOTO_INSPECTION",
+      "step_id": "1",
+      "step_name": "拍照",
+      "step_desc": "相机对半成品进行拍照",
+      "device_name": "Camera",
+      "action_signal": "photoInspection_Camera",
+      "display_text": "photo inspection|camera",
+      "process_context": {
+        "hardware_resource": [
+          "相机"
+        ],
+        "product": {
+          "product_class": "检测半成品",
+          "product_specific": "已完成拍照检测"
+        },
+        "from_condition": "动子就位, 收到拍照检测信息",
+        "to_condition": "拍照检测完成"
+      }
+    },
+    "FINISHED_PRODUCTS_WAREHOUSING__1": {
+      "context_id": "FINISHED_PRODUCTS_WAREHOUSING__1",
+      "operation_node_key": "510",
+      "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
+      "step_id": "1",
+      "step_name": "转移成品",
+      "step_desc": "转移机器臂6将成品转移至传送带2上",
+      "device_name": "ARM6",
+      "action_signal": "moveIn_ARM6",
+      "display_text": "move in|ARM6",
+      "process_context": {
+        "hardware_resource": [
+          "转移机器臂6",
+          "仓库机器臂7",
+          "传送带2"
+        ],
+        "product": {
+          "product_class": "最终成品",
+          "product_specific": "已入库成品"
+        },
+        "from_condition": "动子就位, 收到成品入库信息",
+        "to_condition": "成品入库完成"
+      }
+    },
+    "FINISHED_PRODUCTS_WAREHOUSING__2": {
+      "context_id": "FINISHED_PRODUCTS_WAREHOUSING__2",
+      "operation_node_key": "520",
+      "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
+      "step_id": "2",
+      "step_name": "返回初始",
+      "step_desc": "转移机器臂6回到初始位置",
+      "device_name": "ARM6",
+      "action_signal": "reset_ARM6",
+      "display_text": "reset|ARM6",
+      "process_context": {
+        "hardware_resource": [
+          "转移机器臂6",
+          "仓库机器臂7",
+          "传送带2"
+        ],
+        "product": {
+          "product_class": "最终成品",
+          "product_specific": "已入库成品"
+        },
+        "from_condition": "动子就位, 收到成品入库信息",
+        "to_condition": "成品入库完成"
+      }
+    },
+    "FINISHED_PRODUCTS_WAREHOUSING__3": {
+      "context_id": "FINISHED_PRODUCTS_WAREHOUSING__3",
+      "operation_node_key": "530",
+      "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
+      "step_id": "3",
+      "step_name": "启动传送带",
+      "step_desc": "传送带2反转启动",
+      "device_name": "ConveyorBelt2",
+      "action_signal": "backward_conveyorBelt2",
+      "display_text": "backward|conveyor belt2",
+      "process_context": {
+        "hardware_resource": [
+          "转移机器臂6",
+          "仓库机器臂7",
+          "传送带2"
+        ],
+        "product": {
+          "product_class": "最终成品",
+          "product_specific": "已入库成品"
+        },
+        "from_condition": "动子就位, 收到成品入库信息",
+        "to_condition": "成品入库完成"
+      }
+    },
+    "FINISHED_PRODUCTS_WAREHOUSING__4": {
+      "context_id": "FINISHED_PRODUCTS_WAREHOUSING__4",
+      "operation_node_key": "540",
+      "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
+      "step_id": "4",
+      "step_name": "检测并停止",
+      "step_desc": "成品在传送带2始端被检测到时，传送带2停止",
+      "device_name": "ConveyorBelt2",
+      "action_signal": "stop_conveyorBelt2",
+      "display_text": "stop|conveyor belt2",
+      "process_context": {
+        "hardware_resource": [
+          "转移机器臂6",
+          "仓库机器臂7",
+          "传送带2"
+        ],
+        "product": {
+          "product_class": "最终成品",
+          "product_specific": "已入库成品"
+        },
+        "from_condition": "动子就位, 收到成品入库信息",
+        "to_condition": "成品入库完成"
+      }
+    },
+    "FINISHED_PRODUCTS_WAREHOUSING__5": {
+      "context_id": "FINISHED_PRODUCTS_WAREHOUSING__5",
+      "operation_node_key": "550",
+      "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
+      "step_id": "5",
+      "step_name": "仓库入库",
+      "step_desc": "仓库机器臂7将传送带2上的成品入库至仓库对应位置，至仓库位置(2, 2, 1)",
+      "device_name": "ARM7",
+      "action_signal": "inbound_ARM7",
+      "display_text": "inbound|ARM7",
+      "process_context": {
+        "hardware_resource": [
+          "转移机器臂6",
+          "仓库机器臂7",
+          "传送带2"
+        ],
+        "product": {
+          "product_class": "最终成品",
+          "product_specific": "已入库成品"
+        },
+        "from_condition": "动子就位, 收到成品入库信息",
+        "to_condition": "成品入库完成"
+      },
+      "payload": {
+        "target_location": {
+          "x": 2,
+          "y": 2,
+          "z": 1
+        }
+      },
+      "register_payload": {
+        "target_x": 2,
+        "target_y": 2,
+        "target_z": 1
+      }
+    },
+    "FINISHED_PRODUCTS_WAREHOUSING__6": {
+      "context_id": "FINISHED_PRODUCTS_WAREHOUSING__6",
+      "operation_node_key": "560",
+      "process_id": "FINISHED_PRODUCTS_WAREHOUSING",
+      "step_id": "6",
+      "step_name": "返回初始位",
+      "step_desc": "仓库机器臂7回到初始位置",
+      "device_name": "ARM7",
+      "action_signal": "reset_ARM7",
+      "display_text": "reset|ARM7",
+      "process_context": {
+        "hardware_resource": [
+          "转移机器臂6",
+          "仓库机器臂7",
+          "传送带2"
+        ],
+        "product": {
+          "product_class": "最终成品",
+          "product_specific": "已入库成品"
+        },
+        "from_condition": "动子就位, 收到成品入库信息",
+        "to_condition": "成品入库完成"
+      }
+    }
+  },
+  "node_key_index": {
+    "120": "RAW_MATERIAL_HANDLING_CHASSIS__1",
+    "130": "RAW_MATERIAL_HANDLING_CHASSIS__2",
+    "140": "RAW_MATERIAL_HANDLING_CHASSIS__3",
+    "150": "RAW_MATERIAL_HANDLING_CHASSIS__4",
+    "160": "RAW_MATERIAL_HANDLING_CHASSIS__5",
+    "170": "RAW_MATERIAL_HANDLING_CHASSIS__6",
+    "200": "RAW_MATERIAL_HANDLING_BATTERY__1",
+    "210": "RAW_MATERIAL_HANDLING_BATTERY__2",
+    "220": "RAW_MATERIAL_HANDLING_BATTERY__3",
+    "230": "RAW_MATERIAL_HANDLING_BATTERY__4",
+    "240": "RAW_MATERIAL_HANDLING_BATTERY__5",
+    "250": "RAW_MATERIAL_HANDLING_BATTERY__6",
+    "280": "RAW_MATERIAL_HANDLING_BODY__1",
+    "290": "RAW_MATERIAL_HANDLING_BODY__2",
+    "300": "RAW_MATERIAL_HANDLING_BODY__3",
+    "310": "RAW_MATERIAL_HANDLING_BODY__4",
+    "320": "RAW_MATERIAL_HANDLING_BODY__5",
+    "330": "RAW_MATERIAL_HANDLING_BODY__6",
+    "360": "WELDING__1",
+    "370": "WELDING__2",
+    "400": "PAINTING__1",
+    "410": "PAINTING__2",
+    "420": "PAINTING__3",
+    "430": "PAINTING__4",
+    "440": "PAINTING__5",
+    "450": "PAINTING__6",
+    "460": "PAINTING__7",
+    "480": "PHOTO_INSPECTION__1",
+    "510": "FINISHED_PRODUCTS_WAREHOUSING__1",
+    "520": "FINISHED_PRODUCTS_WAREHOUSING__2",
+    "530": "FINISHED_PRODUCTS_WAREHOUSING__3",
+    "540": "FINISHED_PRODUCTS_WAREHOUSING__4",
+    "550": "FINISHED_PRODUCTS_WAREHOUSING__5",
+    "560": "FINISHED_PRODUCTS_WAREHOUSING__6"
+  }
+}

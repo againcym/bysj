@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/arm1_sm#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://www.semanticweb.org/ontologies/arm1_sm">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/arm1_sm" />
+    <owl:Class rdf:about="#State" />
+    <owl:ObjectProperty rdf:about="#release_Mover">
+        <rdfs:label>release (Q4.2)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#moveTo_Mover">
+        <rdfs:label>move_to (Q4.3)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:NamedIndividual rdf:about="#NotAtTarget">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>not at target position | MoverPosition</rdfs:label>
+        <moveTo_Mover rdf:resource="#AtTarget" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#AtTarget">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>at target position | MoverPosition</rdfs:label>
+        <release_Mover rdf:resource="#NotAtTarget" />
+    </owl:NamedIndividual>
+</rdf:RDF>

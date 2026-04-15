@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/arm1_sm#"
+     xml:base="http://www.semanticweb.org/ontologies/arm1_sm"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/arm1_sm"/>
+    <owl:Class rdf:about="#State"/>
+
+    <owl:ObjectProperty rdf:about="#trackWelding_ARM4"><rdfs:label>track welding (Q2.2)</rdfs:label></owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#reset_ARM4"><rdfs:label>reset (Q2.3)</rdfs:label></owl:ObjectProperty>
+
+    <owl:NamedIndividual rdf:about="#AtStartPosition">
+        <rdf:type rdf:resource="#State"/>
+        <rdfs:label>at start position | ARM4Mode</rdfs:label>
+        <trackWelding_ARM4 rdf:resource="#TrackweldingCompleted"/>
+        <reset_ARM4 rdf:resource="#AtStartPosition"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#TrackweldingCompleted">
+        <rdf:type rdf:resource="#State"/>
+        <rdfs:label>not at start position | ARM4Mode &amp;&amp; completed | TrackWelding_ARM4</rdfs:label>
+        <reset_ARM4 rdf:resource="#AtStartPosition"/>
+        <trackWelding_ARM4 rdf:resource="#TrackweldingCompleted"/>
+    </owl:NamedIndividual>
+</rdf:RDF>

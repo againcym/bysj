@@ -1,0 +1,254 @@
+{
+  "device_name_map": {
+    "仓库机器臂1": "ARM1",
+    "转移机器臂2": "ARM2",
+    "焊接机器臂3": "ARM3",
+    "焊接机器臂4": "ARM4",
+    "涂装机器臂5": "ARM5",
+    "转移机器臂6": "ARM6",
+    "仓库机器臂7": "ARM7",
+    "传送带1": "ConveyorBelt1",
+    "传送带2": "ConveyorBelt2",
+    "相机": "Camera"
+  },
+  "action_aliases": {
+    "ARM1": {
+      "outbound": [
+        "出库",
+        "放到传送带",
+        "送到传送带"
+      ],
+      "inbound": [
+        "入库",
+        "收回"
+      ],
+      "reset": [
+        "返回初始",
+        "回到初始",
+        "初始位置",
+        "复位"
+      ]
+    },
+    "ARM2": {
+      "moveOut": [
+        "转移至动子",
+        "移到动子",
+        "装到动子"
+      ],
+      "moveIn": [
+        "转移至传送带",
+        "放上传送带",
+        "接入传送带"
+      ],
+      "reset": [
+        "返回初始",
+        "回到初始",
+        "初始位置",
+        "复位"
+      ]
+    },
+    "ARM5": {
+      "pickUpTerminal": [
+        "更换末端工具",
+        "拿起末端工具",
+        "拾取末端工具"
+      ],
+      "trackPainting": [
+        "涂装",
+        "进行涂装",
+        "喷涂"
+      ],
+      "putDownTerminal": [
+        "放回末端工具",
+        "放下末端工具"
+      ],
+      "reset": [
+        "返回初始",
+        "回到初始",
+        "复位"
+      ]
+    },
+    "ARM6": {
+      "moveOut": [
+        "转移至动子",
+        "移到动子",
+        "装到动子"
+      ],
+      "moveIn": [
+        "转移至传送带",
+        "放上传送带",
+        "将成品转移至传送带"
+      ],
+      "reset": [
+        "返回初始",
+        "回到初始",
+        "初始位置",
+        "复位"
+      ]
+    },
+    "ARM7": {
+      "outbound": [
+        "出库",
+        "放到传送带",
+        "送到传送带"
+      ],
+      "inbound": [
+        "入库",
+        "收回",
+        "仓库入库"
+      ],
+      "reset": [
+        "返回初始",
+        "回到初始",
+        "初始位置",
+        "复位"
+      ]
+    },
+    "ConveyorBelt1": {
+      "forward": [
+        "正转",
+        "向前传送"
+      ],
+      "backward": [
+        "反转",
+        "向后传送"
+      ],
+      "stop": [
+        "停止",
+        "停下"
+      ]
+    },
+    "ConveyorBelt2": {
+      "forward": [
+        "正转",
+        "向前传送"
+      ],
+      "backward": [
+        "反转",
+        "向后传送",
+        "反转启动"
+      ],
+      "stop": [
+        "停止",
+        "停下"
+      ]
+    },
+    "Camera": {
+      "photoInspection": [
+        "拍照",
+        "拍照检测",
+        "检测"
+      ]
+    }
+  },
+  "transport_unit_patterns": {
+    "raw_material_outbound": {
+      "process_ids": [
+        "RAW_MATERIAL_HANDLING_CHASSIS",
+        "RAW_MATERIAL_HANDLING_BATTERY",
+        "RAW_MATERIAL_HANDLING_BODY"
+      ],
+      "roles": {
+        "warehouse_arm": [
+          "ARM1"
+        ],
+        "transfer_arm": [
+          "ARM2"
+        ],
+        "conveyor": [
+          "ConveyorBelt1"
+        ]
+      },
+      "flow_direction": "warehouse_to_mover",
+      "action_roles": {
+        "warehouse_arm_load": "outbound",
+        "conveyor_move": "forward",
+        "transfer_arm_unload": "moveOut"
+      },
+      "sensor_roles": {
+        "warehouse_arm_edge_sensor": "first_sensor",
+        "transfer_arm_edge_sensor": "second_sensor",
+        "conveyor_stop_sensor": "second_sensor"
+      }
+    },
+    "finished_product_inbound": {
+      "process_ids": [
+        "FINISHED_PRODUCTS_WAREHOUSING"
+      ],
+      "roles": {
+        "transfer_arm": [
+          "ARM6"
+        ],
+        "warehouse_arm": [
+          "ARM7"
+        ],
+        "conveyor": [
+          "ConveyorBelt2"
+        ]
+      },
+      "flow_direction": "mover_to_warehouse",
+      "action_roles": {
+        "transfer_arm_load": "moveIn",
+        "conveyor_move": "backward",
+        "warehouse_arm_unload": "inbound"
+      },
+      "sensor_roles": {
+        "transfer_arm_edge_sensor": "second_sensor",
+        "warehouse_arm_edge_sensor": "first_sensor",
+        "conveyor_stop_sensor": "first_sensor"
+      }
+    }
+  },
+  "reasoning_patterns": {
+    "reset_link": {
+      "assumption_prefers": [
+        "not at start position"
+      ],
+      "guarantee_prefers_completion": true
+    },
+    "conveyor_motion_to_stop": {
+      "guarantee_prefers": [
+        "forward rotation",
+        "backward rotation"
+      ],
+      "assumption_prefers_signal_family": [
+        "CB"
+      ]
+    },
+    "stop_to_next_arm": {
+      "guarantee_prefers": [
+        "stopped"
+      ],
+      "assumption_prefers": [
+        "at start position"
+      ]
+    },
+    "arm5_chain": {
+      "pickUp_to_trackPainting": {
+        "guarantee_prefers": [
+          "picked up"
+        ],
+        "clear_assumption": true
+      },
+      "trackPainting_to_putDown": {
+        "guarantee_prefers": [
+          "completed"
+        ],
+        "clear_assumption": true
+      },
+      "putDown_to_reset": {
+        "guarantee_prefers": [
+          "put down"
+        ],
+        "assumption_prefers": [
+          "not at start position"
+        ]
+      }
+    }
+  },
+  "interface_alias": {
+    "TrackWelding_ARM3": "TrackWelding",
+    "TrackWelding_ARM4": "TrackWelding",
+    "TrackPainting_ARM5": "TrackPainting"
+  }
+}

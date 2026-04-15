@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE product_line [
+    <!ELEMENT product_line (object+)>
+    <!ELEMENT object (Resource,Process,Product,From,To)>
+    <!ATTLIST object id ID #REQUIRED>
+    <!ELEMENT Resource (Hardware_Resource, Material_Resource?)>
+    <!ELEMENT Hardware_Resource (#PCDATA)>
+    <!ELEMENT Material_Resource (#PCDATA)>
+    <!ELEMENT Process (process_step+)>
+    <!ELEMENT process_step (step_name, step_desc)>
+    <!ATTLIST process_step id CDATA #REQUIRED>
+    <!ELEMENT step_name (#PCDATA)>
+    <!ELEMENT step_desc (#PCDATA)>
+    <!ELEMENT Product (product_class,product_specific)>
+    <!ELEMENT product_class (#PCDATA)>
+    <!ELEMENT product_specific (#PCDATA)>
+    <!ELEMENT From (From_id,From_condition)>
+    <!ELEMENT From_id (#PCDATA)>
+    <!ELEMENT From_condition (#PCDATA)>
+    <!ELEMENT To (To_id,To_condition)>
+    <!ELEMENT To_id (#PCDATA)>
+    <!ELEMENT To_condition (#PCDATA)>
+]>
+<product_line>
+    <object id="RAW_MATERIAL_HANDLING_CHASSIS">
+        <Resource>
+            <Hardware_Resource>仓库机器臂1, 转移机器臂2, 传送带1</Hardware_Resource>
+            <Material_Resource>car_chassis @ (WS_01, 3, 1)</Material_Resource>
+        </Resource>
+        <Process>
+            <process_step id="1">
+                <step_name>原料出库</step_name>
+                <step_desc>仓库机器臂1将原料(WS_01, 3, 1)出库至传送带1上</step_desc>
+            </process_step>
+            <process_step id="2">
+                <step_name>返回初始</step_name>
+                <step_desc>仓库机器臂1回到初始位置</step_desc>
+            </process_step>
+            <process_step id="3">
+                <step_name>传送带启动</step_name>
+                <step_desc>传送带1正转启动</step_desc>
+            </process_step>
+            <process_step id="4">
+                <step_name>检测停止</step_name>
+                <step_desc>原料在传送带1末端被检测到时，传送带1停止</step_desc>
+            </process_step>
+            <process_step id="5">
+                <step_name>转移原料</step_name>
+                <step_desc>转移机器臂2将传送带1上的原料转移至动子上</step_desc>
+            </process_step>
+            <process_step id="6">
+                <step_name>返回初始</step_name>
+                <step_desc>转移机器臂2回到初始位置</step_desc>
+            </process_step>
+        </Process>
+        <Product>
+            <product_class>原料</product_class>
+            <product_specific>car_chassis</product_specific>
+        </Product>
+        <From>
+            <From_id>Mover</From_id>
+            <From_condition>动子就位, 收到拿取原料信息</From_condition>
+        </From>
+        <To>
+            <To_id>Mover</To_id>
+            <To_condition>原料拿取完成</To_condition>
+        </To>
+    </object>
+    <object id="RAW_MATERIAL_HANDLING_BATTERY">
+        <Resource>
+            <Hardware_Resource>仓库机器臂1, 转移机器臂2, 传送带1</Hardware_Resource>
+            <Material_Resource>car_battery @ (WS_02, 1, 5)</Material_Resource>
+        </Resource>
+        <Process>
+            <process_step id="1">
+                <step_name>原料出库</step_name>
+                <step_desc>仓库机器臂1将原料(WS_02, 1, 5)出库至传送带1上</step_desc>
+            </process_step>
+            <process_step id="2">
+                <step_name>返回初始</step_name>
+                <step_desc>仓库机器臂1回到初始位置</step_desc>
+            </process_step>
+            <process_step id="3">
+                <step_name>传送带启动</step_name>
+                <step_desc>传送带1正转启动</step_desc>
+            </process_step>
+            <process_step id="4">
+                <step_name>检测停止</step_name>
+                <step_desc>原料在传送带1末端被检测到时，传送带1停止</step_desc>
+            </process_step>
+            <process_step id="5">
+                <step_name>转移原料</step_name>
+                <step_desc>转移机器臂2将传送带1上的原料转移至动子上</step_desc>
+            </process_step>
+            <process_step id="6">
+                <step_name>返回初始</step_name>
+                <step_desc>转移机器臂2回到初始位置</step_desc>
+            </process_step>
+        </Process>
+        <Product>
+            <product_class>原料</product_class>
+            <product_specific>car_chassis,car_battery</product_specific>
+        </Product>
+        <From>
+            <From_id>Mover</From_id>
+            <From_condition>动子就位, 收到拿取原料信息</From_condition>
+        </From>
+        <To>
+            <To_id>Mover</To_id>
+            <To_condition>原料拿取完成</To_condition>
+        </To>
+    </object>
+    <object id="RAW_MATERIAL_HANDLING_BODY">
+        <Resource>
+            <Hardware_Resource>仓库机器臂1, 转移机器臂2, 传送带1</Hardware_Resource>
+            <Material_Resource>car_body @ (WS_01, 2, 1)</Material_Resource>
+        </Resource>
+        <Process>
+            <process_step id="1">
+                <step_name>原料出库</step_name>
+                <step_desc>仓库机器臂1将原料(WS_01, 2, 1)出库至传送带1上</step_desc>
+            </process_step>
+            <process_step id="2">
+                <step_name>返回初始</step_name>
+                <step_desc>仓库机器臂1回到初始位置</step_desc>
+            </process_step>
+            <process_step id="3">
+                <step_name>传送带启动</step_name>
+                <step_desc>传送带1正转启动</step_desc>
+            </process_step>
+            <process_step id="4">
+                <step_name>传送带停止</step_name>
+                <step_desc>原料在传送带1末端被检测到时，传送带1停止</step_desc>
+            </process_step>
+            <process_step id="5">
+                <step_name>转移原料</step_name>
+                <step_desc>转移机器臂2将传送带1上的原料转移至动子上</step_desc>
+            </process_step>
+            <process_step id="6">
+                <step_name>返回初始</step_name>
+                <step_desc>转移机器臂2回到初始位置</step_desc>
+            </process_step>
+        </Process>
+        <Product>
+            <product_class>原料</product_class>
+            <product_specific>car_chassis,car_battery,car_body</product_specific>
+        </Product>
+        <From>
+            <From_id>Mover</From_id>
+            <From_condition>动子就位, 收到拿取原料信息</From_condition>
+        </From>
+        <To>
+            <To_id>Mover</To_id>
+            <To_condition>原料拿取完成</To_condition>
+        </To>
+    </object>
+    <object id="WELDING">
+        <Resource>
+            <Hardware_Resource>焊接机器臂3</Hardware_Resource>
+            <Material_Resource>原料</Material_Resource>
+        </Resource>
+        <Process>
+            <process_step id="1">
+                <step_name>轨道焊接</step_name>
+                <step_desc>焊接机器臂3根据焊接位置信息对组件进行轨道焊接</step_desc>
+            </process_step>
+            <process_step id="2">
+                <step_name>返回初始</step_name>
+                <step_desc>焊接机器臂3回到初始位置</step_desc>
+            </process_step>
+        </Process>
+        <Product>
+            <product_class>焊接半成品</product_class>
+            <product_specific>组件完成轨道焊接</product_specific>
+        </Product>
+        <From>
+            <From_id>Mover</From_id>
+            <From_condition>动子就位, 收到焊接信息</From_condition>
+        </From>
+        <To>
+            <To_id>Mover</To_id>
+            <To_condition>焊接完成</To_condition>
+        </To>
+    </object>
+    <object id="PAINTING">
+        <Resource>
+            <Hardware_Resource>涂装机器臂5</Hardware_Resource>
+            <Material_Resource>焊接半成品</Material_Resource>
+        </Resource>
+        <Process>
+            <process_step id="1">
+                <step_name>更换工具</step_name>
+                <step_desc>涂装机器臂5更换末端工具2</step_desc>
+            </process_step>
+            <process_step id="2">
+                <step_name>执行涂装</step_name>
+                <step_desc>涂装机器臂5根据红色整机喷涂信息进行涂装</step_desc>
+            </process_step>
+            <process_step id="3">
+                <step_name>放回工具</step_name>
+                <step_desc>涂装机器臂5放回末端工具2</step_desc>
+            </process_step>
+            <process_step id="4">
+                <step_name>更换工具</step_name>
+                <step_desc>涂装机器臂5更换末端工具5</step_desc>
+            </process_step>
+            <process_step id="5">
+                <step_name>执行涂装</step_name>
+                <step_desc>涂装机器臂5根据蓝色写LUCKY字样信息进行涂装</step_desc>
+            </process_step>
+            <process_step id="6">
+                <step_name>放回工具</step_name>
+                <step_desc>涂装机器臂5放回末端工具5</step_desc>
+            </process_step>
+            <process_step id="7">
+                <step_name>返回初始位</step_name>
+                <step_desc>涂装机器臂5回到初始位置</step_desc>
+            </process_step>
+        </Process>
+        <Product>
+            <product_class>涂装半成品</product_class>
+            <product_specific>已完成涂装</product_specific>
+        </Product>
+        <From>
+            <From_id>Mover</From_id>
+            <From_condition>动子就位, 收到涂装信息</From_condition>
+        </From>
+        <To>
+            <To_id>Mover</To_id>
+            <To_condition>喷涂完成</To_condition>
+        </To>
+    </object>
+    <object id="PHOTO_INSPECTION">
+        <Resource>
+            <Hardware_Resource>相机</Hardware_Resource>
+            <Material_Resource>涂装半成品</Material_Resource>
+        </Resource>
+        <Process>
+            <process_step id="1">
+                <step_name>拍照</step_name>
+                <step_desc>相机对半成品进行拍照</step_desc>
+            </process_step>
+        </Process>
+        <Product>
+            <product_class>检测半成品</product_class>
+            <product_specific>已完成拍照检测</product_specific>
+        </Product>
+        <From>
+            <From_id>Mover</From_id>
+            <From_condition>动子就位, 收到拍照检测信息</From_condition>
+        </From>
+        <To>
+            <To_id>Mover</To_id>
+            <To_condition>拍照检测完成</To_condition>
+        </To>
+    </object>
+    <object id="FINISHED_PRODUCTS_WAREHOUSING">
+        <Resource>
+            <Hardware_Resource>转移机器臂6, 仓库机器臂7, 传送带2</Hardware_Resource>
+            <Material_Resource>检测半成品</Material_Resource>
+        </Resource>
+        <Process>
+            <process_step id="1">
+                <step_name>转移成品</step_name>
+                <step_desc>转移机器臂6将成品转移至传送带2上</step_desc>
+            </process_step>
+            <process_step id="2">
+                <step_name>返回初始</step_name>
+                <step_desc>转移机器臂6回到初始位置</step_desc>
+            </process_step>
+            <process_step id="3">
+                <step_name>启动传送带</step_name>
+                <step_desc>传送带2反转启动</step_desc>
+            </process_step>
+            <process_step id="4">
+                <step_name>检测并停止</step_name>
+                <step_desc>成品在传送带2始端被检测到时，传送带2停止</step_desc>
+            </process_step>
+            <process_step id="5">
+                <step_name>仓库入库</step_name>
+                <step_desc>仓库机器臂7将传送带2上的成品入库至仓库对应位置，至仓库位置(2, 2, 1)</step_desc>
+            </process_step>
+            <process_step id="6">
+                <step_name>返回初始位</step_name>
+                <step_desc>仓库机器臂7回到初始位置</step_desc>
+            </process_step>
+        </Process>
+        <Product>
+            <product_class>最终成品</product_class>
+            <product_specific>已入库成品</product_specific>
+        </Product>
+        <From>
+            <From_id>Mover</From_id>
+            <From_condition>动子就位, 收到成品入库信息</From_condition>
+        </From>
+        <To>
+            <To_id>Mover</To_id>
+            <To_condition>成品入库完成</To_condition>
+        </To>
+    </object>
+</product_line>

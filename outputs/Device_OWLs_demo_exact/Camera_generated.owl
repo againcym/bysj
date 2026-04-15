@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/arm1_sm#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://www.semanticweb.org/ontologies/arm1_sm">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/arm1_sm" />
+    <owl:Class rdf:about="#State" />
+    <owl:AnnotationProperty rdf:about="#isAutomaticTransition" />
+    <owl:ObjectProperty rdf:about="#photoInspection_Camera">
+        <rdfs:label>photo inspection (Q4.4)</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#reset_Camera">
+        <rdfs:label>reset (internal)</rdfs:label>
+        <rdfs:comment>This transition fires automatically and immediately when the source state is entered.</rdfs:comment>
+        <isAutomaticTransition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAutomaticTransition>
+    </owl:ObjectProperty>
+    <owl:NamedIndividual rdf:about="#Cameraready">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>ready | CameraMode</rdfs:label>
+        <photoInspection_Camera rdf:resource="#PhotoInspectionCompleted" />
+        <reset_Camera rdf:resource="#CameraReady" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#PhotoInspectionCompleted">
+        <rdf:type rdf:resource="#State" />
+        <rdfs:label>completed | PhotoInspection</rdfs:label>
+        <reset_Camera rdf:resource="#CameraReady" />
+    </owl:NamedIndividual>
+</rdf:RDF>
