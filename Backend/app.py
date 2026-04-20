@@ -23,12 +23,18 @@ if str(PROJECT_ROOT) not in sys.path:
 if str(CONTRACTS_DIR) not in sys.path:
     sys.path.insert(0, str(CONTRACTS_DIR))
 
+from Integration import FactoryIOModbusService, ModbusAdapterError
+
 STATIC_DIR = PROJECT_ROOT / "Backend" / "static"
 INDEX_HTML = STATIC_DIR / "index.html"
 TOOL1118_DIR = Path(r"C:\Users\11769\Desktop\festo\tool1118-V3\tool1118")
 TOOL1118_START_EXE = TOOL1118_DIR / "start.exe"
 TOOL1118_SERVER_PUBLIC_RESULT_XML = TOOL1118_DIR / "server" / "public" / "result.xml"
 TOOL1118_VUE_ASSET_RESULT_XML = TOOL1118_DIR / "vue-cbt-reconstruction" / "src" / "assets" / "result.xml"
+FACTORYIO_DEFAULT_HOST = "127.0.0.1"
+FACTORYIO_DEFAULT_PORT = 502
+FACTORYIO_DEFAULT_UNIT_ID = 1
+FACTORYIO_DEFAULT_TIMEOUT = 2.0
 
 MODULE_IMPORT_ERROR: Optional[BaseException] = None
 
@@ -133,6 +139,23 @@ class PipelineRequest(BaseModel):
     use_llm: bool = Field(True, description="若环境可用，允许调用 LLM 辅助")
 
 
+class FactoryIOConnectionRequest(BaseModel):
+    host: str = Field(FACTORYIO_DEFAULT_HOST, description="Factory I/O Modbus TCP host")
+    port: int = Field(FACTORYIO_DEFAULT_PORT, ge=1, le=65535, description="Factory I/O Modbus TCP port")
+    unit_id: int = Field(FACTORYIO_DEFAULT_UNIT_ID, ge=0, le=255, description="Modbus unit id")
+    timeout: float = Field(FACTORYIO_DEFAULT_TIMEOUT, gt=0.1, le=30.0, description="Socket timeout in seconds")
+
+
+class FactoryIOReadRequest(FactoryIOConnectionRequest):
+    signal_names: List[str] = Field(default_factory=list, description="Signals to read; empty means read by type/all")
+    signal_type: Optional[str] = Field(None, description="Optional filter: Input or Output")
+
+
+class FactoryIOWriteRequest(FactoryIOConnectionRequest):
+    signal_name: str = Field(..., min_length=1, description="Output signal to write")
+    value: bool = Field(True, description="Target output value")
+
+
 # ---------------------------------------------------------------------------
 # App
 # ---------------------------------------------------------------------------
@@ -150,6 +173,17 @@ app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 @app.get("/", response_class=HTMLResponse)
 def index() -> HTMLResponse:
     return HTMLResponse(INDEX_HTML.read_text(encoding="utf-8"))
+
+
+def _build_factoryio_service(req: Optional[FactoryIOConnectionRequest] = None) -> FactoryIOModbusService:
+    config = req or FactoryIOConnectionRequest()
+    return FactoryIOModbusService(
+        signal_definition_path=Path(SIGNAL_OUTPUT_XML),
+        host=config.host,
+        port=config.port,
+        unit_id=config.unit_id,
+        timeout=config.timeout,
+    )
 
 
 @app.get("/api/examples")
@@ -182,6 +216,103 @@ def download_artifact(artifact_name: str):
     elif suffix == ".json":
         media_type = "application/json"
     return FileResponse(path, media_type=media_type, filename=Path(path).name)
+
+
+@app.get("/api/factoryio/config")
+def factoryio_config() -> JSONResponse:
+    try:
+        service = _build_factoryio_service()
+        return JSONResponse(
+            {
+                "ok": True,
+                "config": service.describe(),
+                "signal_definition_exists": Path(SIGNAL_OUTPUT_XML).exists(),
+            }
+        )
+    except ModbusAdapterError as exc:
+        return JSONResponse(status_code=404, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
+
+
+@app.post("/api/factoryio/test-connection")
+def factoryio_test_connection(req: FactoryIOConnectionRequest) -> JSONResponse:
+    try:
+        service = _build_factoryio_service(req)
+        return JSONResponse({"ok": True, "result": service.test_connection(), "config": service.describe()})
+    except ModbusAdapterError as exc:
+        return JSONResponse(status_code=400, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
+
+
+@app.post("/api/factoryio/signal-mappings")
+def factoryio_signal_mappings(req: FactoryIOReadRequest) -> JSONResponse:
+    try:
+        service = _build_factoryio_service(req)
+        return JSONResponse(
+            {
+                "ok": True,
+                "config": service.describe(),
+                "signals": service.list_signals(signal_type=req.signal_type),
+            }
+        )
+    except ModbusAdapterError as exc:
+        return JSONResponse(status_code=400, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
+
+
+@app.post("/api/factoryio/read-signals")
+def factoryio_read_signals(req: FactoryIOReadRequest) -> JSONResponse:
+    try:
+        service = _build_factoryio_service(req)
+        return JSONResponse(
+            {
+                "ok": True,
+                "config": service.describe(),
+                "signals": service.read_signals(
+                    signal_names=req.signal_names or None,
+                    signal_type=req.signal_type,
+                ),
+            }
+        )
+    except ModbusAdapterError as exc:
+        return JSONResponse(status_code=400, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
+
+
+@app.post("/api/factoryio/write-signal")
+def factoryio_write_signal(req: FactoryIOWriteRequest) -> JSONResponse:
+    try:
+        service = _build_factoryio_service(req)
+        return JSONResponse(
+            {
+                "ok": True,
+                "config": service.describe(),
+                "signal": service.write_output_signal(req.signal_name, req.value),
+            }
+        )
+    except ModbusAdapterError as exc:
+        return JSONResponse(status_code=400, content={"ok": False, "error": str(exc)})
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
+        )
 
 
 @app.post("/api/open-contract")
