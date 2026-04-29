@@ -428,9 +428,6 @@ class ProcessContractGenerator:
             if item.get("signal"):
                 signal_map[item["S"]] = item["signal"]
 
-        if obj.get("id") == "RAW_MATERIAL_HANDLING_CHASSIS" and "ARM2" in signal_map:
-            signal_map["ARM2"] = "ARM2 is at start position"
-
         return g, a, signal_map
 
     def _fallback_process_condition(self, text: str) -> Dict[str, Any]:
