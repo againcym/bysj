@@ -23,7 +23,7 @@ from Config.factory_mcp_server import (
 )
 
 
-HARD_CODED_MODEL = "qwen3coder"
+HARD_CODED_MODEL = "qwen"
 HARD_CODED_API_KEY = "sk-dQIpgr85q-E2l2Emr01uzw"
 HARD_CODED_BASE_URL = "https://models.sjtu.edu.cn/api/v1/"
 

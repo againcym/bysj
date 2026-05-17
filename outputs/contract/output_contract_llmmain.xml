@@ -84,7 +84,7 @@
     </Oblib>
     <NodeArray>
         <Node key="100" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="110" text="RAW_MATERIAL_HANDLING_BACK" textt="RAW_MATERIAL_HANDLING_BACK" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="110" text="RAW_MATERIAL_HANDLING_CHASSIS" textt="RAW_MATERIAL_HANDLING_CHASSIS" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="120" text="null" textt="outbound|ARM1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="130" text="null" textt="reset|ARM1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="140" text="null" textt="forward|conveyor belt1" type="Operation" category="Operation" group="110" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
@@ -100,7 +100,7 @@
         <Node key="240" text="null" textt="move out|ARM2" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="250" text="null" textt="reset|ARM2" type="Operation" category="Operation" group="190" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="260" text="null" textt="move_to|Mover" type="Operation" category="Operation" group="NaN" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
-        <Node key="270" text="RAW_MATERIAL_HANDLING_SCREEN" textt="RAW_MATERIAL_HANDLING_SCREEN" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
+        <Node key="270" text="RAW_MATERIAL_HANDLING_BODY" textt="RAW_MATERIAL_HANDLING_BODY" type="Process" category="Process" group="NaN" isGroup="true" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="280" text="null" textt="outbound|ARM1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="290" text="null" textt="reset|ARM1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
         <Node key="300" text="null" textt="forward|conveyor belt1" type="Operation" category="Operation" group="270" isGroup="false" nodeSignal="[]" isSubGraphExpanded="false" />
@@ -488,9 +488,9 @@
             <Contract>
                 <Guarantee>
                     <Condition>
-                        <tokenDesc>Raw Material Handling Back is completed</tokenDesc>
+                        <tokenDesc>Raw material hanlding is completed</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="Raw Material Handling Back" />
+                            <token type="Variable" text="Raw material hanlding" />
                             <token type="Operator" text="is" />
                             <token type="Value" text="completed" />
                         </tokenGroup>
@@ -1254,9 +1254,9 @@
             <Contract>
                 <Guarantee>
                     <Condition>
-                        <tokenDesc>Raw Material Handling Screen is completed</tokenDesc>
+                        <tokenDesc>Raw material hanlding is completed</tokenDesc>
                         <tokenGroup>
-                            <token type="Variable" text="Raw Material Handling Screen" />
+                            <token type="Variable" text="Raw material hanlding" />
                             <token type="Operator" text="is" />
                             <token type="Value" text="completed" />
                         </tokenGroup>

@@ -201,7 +201,7 @@ class TemplateChooser:
                 if not api_key:
                     raise RuntimeError("missing SJTU_API_KEY / OPENAI_API_KEY")
                 self.client = ChatOpenAI(
-                    model=os.getenv("SJTU_MODEL", "qwen3coder"),
+                    model=os.getenv("SJTU_MODEL", "qwen"),
                     api_key=api_key,
                     base_url=os.getenv("SJTU_BASE_URL", "https://models.sjtu.edu.cn/api/v1/"),
                     temperature=self.temperature,

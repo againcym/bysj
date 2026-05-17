@@ -26,13 +26,15 @@ if str(CONTRACTS_DIR) not in sys.path:
 
 STATIC_DIR = PROJECT_ROOT / "Backend" / "static"
 INDEX_HTML = STATIC_DIR / "index.html"
-TOOL1118_DIR = Path(r"C:\Users\11769\Desktop\festo\tool1118-V3\tool1118")
+TOOL1118_DIR = Path(r"C:\Users\11769\Desktop\IWIN\tool1118-V3\tool1118")
 TOOL1118_START_EXE = TOOL1118_DIR / "start.exe"
 TOOL1118_SERVER_PUBLIC_RESULT_XML = TOOL1118_DIR / "server" / "public" / "result.xml"
 TOOL1118_VUE_ASSET_RESULT_XML = TOOL1118_DIR / "vue-cbt-reconstruction" / "src" / "assets" / "result.xml"
 
 MODULE_IMPORT_ERROR: Optional[BaseException] = None
 SIMULATION_RUNTIME: Optional[ContractSimulationRuntime] = None
+SIM_CONTRACT_RUNNER = PROJECT_ROOT / "sim" / "contract_runner.py"
+SIM_SCENE_PATH = PROJECT_ROOT / "sim" / "scenes" / "assembly_line.ttt"
 
 # ---------------------------------------------------------------------------
 # Safe imports from project
@@ -373,6 +375,60 @@ def simulation_inject(req: SimulationInjectRequest) -> JSONResponse:
             status_code=500,
             content={"ok": False, "error": str(exc), "traceback": traceback.format_exc()},
         )
+
+
+@app.post("/api/simulation/software-run")
+def simulation_software_run() -> JSONResponse:
+    contract_path = Path(CONTRACT_OUTPUT_LLMMAIN_XML)
+    operation_context_path = Path(OPERATION_CONTEXT_JSON)
+    if not contract_path.exists():
+        return JSONResponse(
+            status_code=404,
+            content={"ok": False, "error": f"Contract XML not found: {contract_path}"},
+        )
+    if not SIM_CONTRACT_RUNNER.exists():
+        return JSONResponse(
+            status_code=404,
+            content={"ok": False, "error": f"contract_runner.py not found: {SIM_CONTRACT_RUNNER}"},
+        )
+    if not SIM_SCENE_PATH.exists():
+        return JSONResponse(
+            status_code=404,
+            content={"ok": False, "error": f"CoppeliaSim scene not found: {SIM_SCENE_PATH}"},
+        )
+
+    command = [
+        sys.executable,
+        str(SIM_CONTRACT_RUNNER),
+        "--contract",
+        str(contract_path),
+    ]
+    if operation_context_path.exists():
+        command.extend(["--operation-context", str(operation_context_path)])
+
+    creationflags = getattr(subprocess, "CREATE_NEW_CONSOLE", 0)
+    try:
+        process = subprocess.Popen(
+            command,
+            cwd=str(SIM_CONTRACT_RUNNER.parent),
+            creationflags=creationflags,
+        )
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": f"Failed to start contract_runner.py: {exc}"},
+        )
+
+    return JSONResponse(
+        {
+            "ok": True,
+            "message": "contract_runner.py started.",
+            "pid": process.pid,
+            "contract_path": str(contract_path),
+            "operation_context_path": str(operation_context_path) if operation_context_path.exists() else "",
+            "scene_path": str(SIM_SCENE_PATH),
+        }
+    )
 
 
 @app.post("/api/pipeline")

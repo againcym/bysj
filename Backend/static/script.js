@@ -26,6 +26,7 @@ const state = {
   simulationReady: false,
   simulationStarted: false,
   simulationBusy: false,
+  simulationSoftwareBusy: false,
 };
 
 const examplesEl = document.getElementById('examples');
@@ -49,6 +50,7 @@ const simulationAutoInputs = document.getElementById('sim-auto-inputs');
 const simulationResetBtn = document.getElementById('sim-reset-btn');
 const simulationStepBtn = document.getElementById('sim-step-btn');
 const simulationRunBtn = document.getElementById('sim-run-btn');
+const simulationSoftwareBtn = document.getElementById('sim-software-btn');
 
 init();
 
@@ -177,6 +179,11 @@ function bindSimulationControls() {
   if (simulationRunBtn) {
     simulationRunBtn.addEventListener('click', () => {
       void runSimulation();
+    });
+  }
+  if (simulationSoftwareBtn) {
+    simulationSoftwareBtn.addEventListener('click', () => {
+      void runSimulationSoftware();
     });
   }
 }
@@ -316,6 +323,31 @@ async function injectSimulationInputs(phase, items = []) {
   }
 }
 
+async function runSimulationSoftware() {
+  if (!hasGeneratedContract()) {
+    appendChat('error', '请先完成本次 Contract 生成，再运行仿真软件。');
+    return;
+  }
+  state.simulationSoftwareBusy = true;
+  updateSimulationControls();
+  const originalText = simulationSoftwareBtn?.textContent || '';
+  if (simulationSoftwareBtn) simulationSoftwareBtn.textContent = '正在启动...';
+  try {
+    const response = await fetch('/api/simulation/software-run', { method: 'POST' });
+    const data = await response.json();
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || '启动仿真软件联动失败');
+    }
+    appendChat('assistant', `已启动 contract_runner.py，正在使用本次生成的 Contract 文件联动 CoppeliaSim。\n${data.contract_path || ''}`);
+  } catch (error) {
+    appendChat('error', error.message || '启动仿真软件联动失败');
+  } finally {
+    state.simulationSoftwareBusy = false;
+    if (simulationSoftwareBtn) simulationSoftwareBtn.textContent = originalText;
+    updateSimulationControls();
+  }
+}
+
 function renderSimulationEmpty(message) {
   if (simulationSummary) simulationSummary.innerHTML = '';
   if (simulationCurrent) {
@@ -333,13 +365,27 @@ function renderSimulationPlaceholder(message) {
   renderSimulationEmpty(message);
 }
 
+function hasGeneratedContract() {
+  return !!(
+    state.simulationReady ||
+    state.artifacts?.contract_xml ||
+    state.finalResult?.artifacts?.contract_xml ||
+    ((state.summary.contract_node_count || 0) > 0 && (state.summary.contract_link_count || 0) > 0)
+  );
+}
+
 function updateSimulationControls(busy = false) {
+  const isBusy = busy || state.simulationBusy;
+  const contractReady = hasGeneratedContract();
   if (simulationStartBtn) {
-    simulationStartBtn.disabled = busy || !state.simulationReady || state.simulationStarted;
+    simulationStartBtn.disabled = isBusy || !contractReady || state.simulationStarted;
   }
   [simulationResetBtn, simulationStepBtn, simulationRunBtn].forEach(btn => {
-    if (btn) btn.disabled = busy || !state.simulationStarted;
+    if (btn) btn.disabled = isBusy || !state.simulationStarted;
   });
+  if (simulationSoftwareBtn) {
+    simulationSoftwareBtn.disabled = state.simulationSoftwareBusy || !contractReady;
+  }
 }
 
 function renderSimulation() {
@@ -600,6 +646,7 @@ function resetRun(order) {
   state.simulation = null;
   state.simulationReady = false;
   state.simulationStarted = false;
+  state.simulationSoftwareBusy = false;
   stageSections.className = 'stage-sections';
   stageSections.innerHTML = '';
   liveStatus.innerHTML = '';
@@ -691,6 +738,7 @@ function handlePipelineEvent(event) {
     renderMetrics();
     renderRawSource(document.querySelector('.source-btn.active')?.dataset.source || 'ppr_xml');
     renderSimulationPlaceholder('本次 Contract 已生成。点击“开始仿真”后，将按这一次的结果加载工艺逻辑。');
+    updateSimulationControls();
     return;
   }
 

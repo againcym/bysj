@@ -1302,12 +1302,22 @@ a { text-decoration: none; }
   color: #1d4ed8;
 }
 
+.sim-software-btn {
+  border-color: #c084fc;
+  background: linear-gradient(180deg, #faf5ff 0%, #e9d5ff 100%);
+  color: #6b21a8;
+}
+
 .sim-btn:hover:not(:disabled) {
   background: linear-gradient(180deg, #ccfbf1 0%, #99f6e4 100%);
 }
 
 .sim-btn.sim-start-btn:hover:not(:disabled) {
   background: linear-gradient(180deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.sim-btn.sim-software-btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #e9d5ff 0%, #d8b4fe 100%);
 }
 
 .simulation-grid {
